@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ityunqi.mapper.ShopcartMapper">
+
+    <!--给购物车返回数据-->
+    <select id="selectAll" resultType="com.ityunqi.pojo.ShopcartBean">
+        select milktea.id, milktea.milkteaname, shopcart_detail.count, milktea.price
+
+        from shopcart_detail
+                 join milktea on shopcart_detail.milkteaid = milktea.id
+
+        where shopcart_detail.userid = #{userid};
+
+    </select>
+
+    <select id="selectAllBysd" resultType="com.ityunqi.pojo.ShopcartDetailBean2">
+        select milktea.id, shopcart_detail.count, milktea.price, milktea.salenumber
+
+        from shopcart_detail
+                 join milktea on shopcart_detail.milkteaid = milktea.id
+
+        where shopcart_detail.userid = #{userid};
+    </select>
+
+
+</mapper>
