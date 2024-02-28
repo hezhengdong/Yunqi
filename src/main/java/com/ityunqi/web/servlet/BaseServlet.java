@@ -14,7 +14,7 @@ public class BaseServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String uri = req.getRequestURI();
+        String uri= req.getRequestURI();
         int index = uri.lastIndexOf('/');
         String methodName = uri.substring(index + 1);
 
@@ -22,7 +22,7 @@ public class BaseServlet extends HttpServlet {
 
         try {
             Method method = cls.getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
-            method.invoke(this, req, resp);
+            method.invoke(this,req,resp);
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         } catch (InvocationTargetException e) {

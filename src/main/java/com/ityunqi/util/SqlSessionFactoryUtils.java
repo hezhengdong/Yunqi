@@ -11,7 +11,8 @@ public class SqlSessionFactoryUtils {
     private static SqlSessionFactory sqlSessionFactory;
 
     //静态代码块会随着类的加载而自动执行，且只执行一次
-    static {
+
+    static{
         try {
             //2.1 获取SqlSessionFactory对象
             String resource = "mybatis-config.xml";
@@ -22,7 +23,7 @@ public class SqlSessionFactoryUtils {
         }
     }
 
-    public static SqlSessionFactory getSqlSessionFactory() {
+    public static SqlSessionFactory getSqlSessionFactory(){
         return sqlSessionFactory;
     }
 }
