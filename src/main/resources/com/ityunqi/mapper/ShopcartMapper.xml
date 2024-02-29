@@ -4,10 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ityunqi.mapper.ShopcartMapper">
 
-<<<<<<< HEAD
     <!--给购物车返回数据-->
     <select id="selectAll" resultType="com.ityunqi.pojo.ShopcartBean">
-        select milktea.id, milktea.milkteaname, shopcart_detail.count, milktea.price
+        select milktea.id, milktea.milkteaname, shopcart_detail.count, milktea.price, milktea.image
 
         from shopcart_detail
                  join milktea on shopcart_detail.milkteaid = milktea.id
@@ -24,12 +23,8 @@
 
         where shopcart_detail.userid = #{userid};
     </select>
-=======
 
 
-
-
->>>>>>> 5263db7adee375c58ff6947286539269ace1c443
 
 
 </mapper>
