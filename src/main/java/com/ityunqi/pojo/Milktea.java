@@ -15,5 +15,6 @@ public class Milktea {
     private Integer price;
     private Integer count;
     private Integer salenumber;
+    private String image;
 
 }
