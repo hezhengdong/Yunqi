@@ -5,9 +5,17 @@
 <mapper namespace="com.ityunqi.mapper.MilkteaMapper">
 
 
+    <select id="kindidselect" resultType="com.ityunqi.pojo.Milktea">
 
-
-
-
-
+        select *
+        from dbyunqi.milktea
+        <where>
+            kindid like #{kindid}
+        </where>
+    </select>
+    <select id="salenumberselect" resultType="com.ityunqi.pojo.Milktea">
+        select *
+        from dbyunqi.milktea
+        ORDER BY salenumber DESC
+    </select>
 </mapper>
