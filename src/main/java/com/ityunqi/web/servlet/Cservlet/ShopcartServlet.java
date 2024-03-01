@@ -31,7 +31,12 @@ public class ShopcartServlet extends BaseServlet {
      * @param req
      * @return
      */
-    private int getUserid(HttpServletRequest req) {
+    private int getUserid(HttpServletRequest req,HttpServletResponse resp) {
+        //解决跨域问题
+        // 设置允许跨域的域名，可以设置为 * 表示允许所有域名访问
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        // 允许携带 cookie
+        resp.setHeader("Access-Control-Allow-Credentials", "true");
         //1. 获取Cookie数组
         Cookie[] cookies = req.getCookies();
         // 准备接收cookie中的用户id
@@ -64,9 +69,8 @@ public class ShopcartServlet extends BaseServlet {
     public void selectAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         //===================一、获取cookie=====================
-        int userid = getUserid(req);
+        int userid = getUserid(req,resp);
         if (userid != -1) {
-
             //===================二、调用方法查询所有=====================
             List<ShopcartBean> shopcarts = shopcartService.selectAll(userid);
 
@@ -95,7 +99,7 @@ public class ShopcartServlet extends BaseServlet {
         ShopcartDetailBean shopcartDetailBean = JSON.parseObject(params, ShopcartDetailBean.class);
 
         //===================二、获取cookie=====================
-        int userid = getUserid(req);
+        int userid = getUserid(req,resp);
         if (userid != -1) {
 
             //===================三、判断购物车中是否已有该奶茶id，并执行对应操作=====================
@@ -149,7 +153,7 @@ public class ShopcartServlet extends BaseServlet {
         int count = Integer.parseInt(_count);
 
         //===================二、获取cookie=====================
-        int userid = getUserid(req);
+        int userid = getUserid(req,resp);
         if (userid != -1) {
 
             //===================三、调用修改方法=====================
@@ -176,7 +180,7 @@ public class ShopcartServlet extends BaseServlet {
         int milkteaid = Integer.parseInt(_milkteaid);
 
         //===================二、获取cookie=====================
-        int userid = getUserid(req);
+        int userid = getUserid(req,resp);
         if (userid != -1) {
 
             //===================三、调用删除方法=====================
@@ -199,7 +203,7 @@ public class ShopcartServlet extends BaseServlet {
      */
     public void totalPrice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //===================一、获取cookie=====================
-        int userid = getUserid(req);
+        int userid = getUserid(req,resp);
         if (userid != -1) {
 
             //===================二、获取购物车总金额=====================
@@ -240,7 +244,7 @@ public class ShopcartServlet extends BaseServlet {
             sqlSession.getConnection().setAutoCommit(false);
 
             //===================一、获取cookie=====================
-            int userid = getUserid(req);
+            int userid = getUserid(req,resp);
             if (userid != -1) {
 
                 //===================二、执行业务逻辑=====================
