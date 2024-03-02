@@ -13,9 +13,11 @@
             kindid like #{kindid}
         </where>
     </select>
+
     <select id="salenumberselect" resultType="com.ityunqi.pojo.Milktea">
         select *
         from dbyunqi.milktea
         ORDER BY salenumber DESC
     </select>
+
 </mapper>
