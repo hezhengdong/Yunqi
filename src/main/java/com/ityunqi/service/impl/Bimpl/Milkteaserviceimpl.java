@@ -67,11 +67,13 @@ public class Milkteaserviceimpl implements Milkteaservice {
         return milkteas;
     }
 
+
+
     @Override
-    public List<Milktea> salenumberselect(int salenumber) {
+    public List<Milktea> salenumberselect() {
         SqlSession sqlSession = sessionFactory.openSession();
         MilkteaMapper mapper = sqlSession.getMapper(MilkteaMapper.class);
-        List<Milktea> milkteas = mapper.salenumberselect(salenumber);
+        List<Milktea> milkteas = mapper.salenumberselect();
         sqlSession.commit();
         sqlSession.close();
         return milkteas;

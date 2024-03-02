@@ -11,5 +11,5 @@ public interface Milkteaservice {
     int update(Milktea milktea);
 
     List<Milktea> kindidselect(int kindid);
-    List<Milktea> salenumberselect(int salenumber);
+    List<Milktea> salenumberselect();
 }
