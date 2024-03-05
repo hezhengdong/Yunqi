@@ -13,13 +13,13 @@ public interface MilkteaMapper {
     @Select("select * from dbyunqi.milktea")
     public List<Milktea> selectall();
 
-    @Insert("insert into dbyunqi.milktea values(null,#{milkname},#{introduce},#{kindid},#{price},#{count},#{salenumber},#{image}) ")
+    @Insert("insert into dbyunqi.milktea values(null,#{milkteaname},#{introduce},#{kindid},#{price},#{count},#{salenumber},#{image}) ")
     void add(Milktea milktea);
 
     @Delete("delete from dbyunqi.milktea where id=#{id}")
     void deletebyid(int id);
 
-    @Update("update dbyunqi.milktea set id=#{id},milkteaname=#{milkname},introduce=#{introduce},kindid=#{kindid},price=#{price},count=#{count},salenumber=#{salenumber} where id=#{id}")
+    @Update("update dbyunqi.milktea set id=#{id},milkteaname=#{milkteaname},introduce=#{introduce},kindid=#{kindid},price=#{price},count=#{count},salenumber=#{salenumber} where id=#{id}")
     void update(Milktea milktea);
 
 

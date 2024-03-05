@@ -26,7 +26,7 @@ public class milkteaServlet extends BaseServlet {
         List<Milktea> milkteas = milkteaservice.selectall();
         String jsonString = JSON.toJSONString(Result.success(milkteas));
         httpServletResponse.setContentType("application/json;charset=utf-8");
-        httpServletResponse.getWriter().write(JSON.toJSONString(jsonString));
+        httpServletResponse.getWriter().write(jsonString);
     }
 
     public void add(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
@@ -45,6 +45,12 @@ public class milkteaServlet extends BaseServlet {
         httpServletResponse.getWriter().write(JSON.toJSONString(result));
 
     }
+
+
+
+
+
+
 
     public void update(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         BufferedReader br = httpServletRequest.getReader();
@@ -66,10 +72,11 @@ public class milkteaServlet extends BaseServlet {
         milktea1.setImage(milktea.getImage());
         milktea1.setSalenumber(milktea.getSalenumber());
         milkteaservice.update(milktea1);
-        Result result = Result.success(milktea1);
-        httpServletResponse.getWriter().write(JSON.toJSONString(result));
-
+        String jsonString = JSON.toJSONString(Result.success(milktea1));
+        httpServletResponse.setContentType("application/json;charset=utf-8");
+        httpServletResponse.getWriter().write(JSON.toJSONString(jsonString));
     }
+
 
     public void kindidselect(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         BufferedReader br = httpServletRequest.getReader();
@@ -81,7 +88,8 @@ public class milkteaServlet extends BaseServlet {
         List<Milktea> milkteas = milkteaservice.kindidselect(kindid);
         String jsonString = JSON.toJSONString(Result.success(milkteas));
         httpServletResponse.setContentType("application/json;charset=utf-8");
-        httpServletResponse.getWriter().write(JSON.toJSONString(jsonString));
+        httpServletResponse.getWriter().write(jsonString);
+
 
 
     }
@@ -91,13 +99,10 @@ public class milkteaServlet extends BaseServlet {
         String params = br.readLine();
         Milktea milktea = JSON.parseObject(params, Milktea.class);
         List<Milktea> milkteas = milkteaservice.salenumberselect();
-        /*String jsonString = JSON.toJSONString(milkteas);
-        httpServletResponse.setContentType("text/json;charset=utf-8");
-        Result result = Result.success(milktea);
-        httpServletResponse.getWriter().write(JSON.toJSONString(result));*/
-        String jsonString = JSON.toJSONString(Result.success(milkteas));
         httpServletResponse.setContentType("application/json;charset=utf-8");
-        httpServletResponse.getWriter().write(JSON.toJSONString(jsonString));
+        String jsonString = JSON.toJSONString(Result.success(milkteas));
+        httpServletResponse.getWriter().write(jsonString);
+
 
     }
 
