@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    background-color: #FCCA50;
+    background-color: #FF9901;
 }
 
 .header-flex {
@@ -17,16 +17,18 @@
 }
 
 .header-flex>div:nth-child(1) {
-    margin-right: -9.4%; 
+    margin-right: -8.8%; 
 }
 
 .logo {
     display: flex;
     width: 5%;
     height: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
     background: 
-    /* #707179 */
-    url(https://sandwich-zhang.oss-cn-beijing.aliyuncs.com/loge.png)no-repeat;
+    #FCCA50
+    url(https://sandwich-zhang.oss-cn-beijing.aliyuncs.com/logo.png)no-repeat;
     background-position: left 10px center;
     background-size: 90% 80%;
 }
@@ -38,8 +40,9 @@
     width: 12%;
     height: 100%;
     font-size: 30px;
-    /* color: white; */
-    /* background-color: #707179; */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #FCCA50
 }
 
 .brand-intro {
@@ -71,6 +74,7 @@
     width: 12%;
     height: 80%;
     font-size: 30px;
+    border-radius: 20px;
     /* color: white; */
     background-color: #FFB501;
 }
@@ -94,7 +98,7 @@
     border-bottom-right-radius: 40px;
     width: 20%;
     height: 20%;
-    background-color: #FFB501;
+    background-color: #FFFFFF;
 }
 
 .customer-order {
@@ -181,8 +185,39 @@
     display: inline-block;
     margin-top: 0%;
     margin-left: 5.4%;
-    border-radius: 10%;
+    border-radius: 26px;
     width: 72%;
     height: 76%;
-    background-color: sandybrown;
+    background-color: white;
+}
+
+.searchHistory {
+    margin-top: 1%;
+    margin-left: 70%;
+    width: 20%;
+    height: 5%;
+    border-radius: 20px;
+    background: blanchedalmond;
+}
+
+.orderForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+    width: 80%;
+    height: 80%;
+    background: blueviolet;
+}
+
+.orderHeader {
+    width: 100%;
+    height: 4%;
+    background: cadetblue;
+}
+
+.orderBox {
+    width: 100%;
+    height: 10%;
+    background: chartreuse;
 }
