@@ -7,11 +7,9 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class AddShopcartBean {
-    private Integer id;
-    private String milkteaname;
-    private String introduce;
+public class OrderBean {
+    private Integer orderid;
+    private String username;
+    private String milkteaDetails;
     private Integer price;
-    private String image;
-
 }

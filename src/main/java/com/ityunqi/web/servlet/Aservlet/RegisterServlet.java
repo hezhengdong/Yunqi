@@ -1,8 +1,9 @@
+/*
 package com.ityunqi.web.servlet.Aservlet;
 
 import com.ityunqi.pojo.Result;
 import com.ityunqi.pojo.User;
-import com.ityunqi.service.A.UserService;
+import com.ityunqi.service.A.UserService2;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,7 @@ import java.io.IOException;
 @WebServlet("/registerServlet")
 
 public class RegisterServlet extends HttpServlet {
-    private UserService service=new UserService();
+    private UserService2 service=new UserService2();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
@@ -39,4 +40,4 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.doGet(request,response);
     }
-}
+}*/

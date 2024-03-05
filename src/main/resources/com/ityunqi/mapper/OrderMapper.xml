@@ -4,10 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ityunqi.mapper.OrderMapper">
 
+    <resultMap id="orderBeanResultMap" type="OrderBean">
+        <result property="orderid" column="orderid" />
+        <result property="username" column="username" />
+        <result property="milkteaDetails" column="milktea_details" />
+        <result property="price" column="price" />
+    </resultMap>
 
+    <select id="selectAll" resultMap="orderBeanResultMap">
 
+        select
+            o.orderid,
+            u.username,
+            group_concat(m.milkteaname, ' x', od.count) as milktea_details,
+            o.price
+        from
+            `order` o
+                join
+            user u on o.userid = u.id
+                join
+            order_detail od on o.orderid = od.orderid
+                join
+            milktea m on od.milkteaid = m.id
+        group by
+            o.orderid, u.username
 
-
-
-
+    </select>
 </mapper>

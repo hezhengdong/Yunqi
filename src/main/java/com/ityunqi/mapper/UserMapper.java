@@ -6,14 +6,9 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 public interface UserMapper {
-    /**
-     * 根据用户名和密码查询用户对象
-     * @param username
-     * @param password
-     * @return
-     */
-    @Select("select * from user where username = #{username} and password = #{password}")
-    User select(@Param("username") String username, @Param("password")  String password);
+
+    @Select("select * from user where username = #{username}")
+    User login(String username);
 
     /**
      * 根据用户名查询用户对象

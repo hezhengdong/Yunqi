@@ -1,8 +1,9 @@
+/*
 package com.ityunqi.web.servlet.Aservlet;
 
 import com.ityunqi.pojo.Employee;
 import com.ityunqi.pojo.Result;
-import com.ityunqi.service.A.EmployeeService;
+import com.ityunqi.service.A.EmployeeService1;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,7 @@ import java.io.IOException;
 @WebServlet("/employeeLoginServlet")
 
 public class EmployeeLoginServlet extends HttpServlet {
-    private EmployeeService service=new EmployeeService();
+    private EmployeeService1 service=new EmployeeService1();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String number = request.getParameter("number");
@@ -43,4 +44,4 @@ public class EmployeeLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-}
+}*/

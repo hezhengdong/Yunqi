@@ -3,11 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ityunqi.mapper.ShopcartMapper">
-
-    <!--milktea.id, milktea.milkteaname, shopcart_detail.count, milktea.price,-->
+    <!-- milktea.image-->
+    <!--milktea.id, milktea.milkteaname, shopcart_detail.count, milktea.price-->
     <!--给购物车返回数据-->
     <select id="selectAll" resultType="com.ityunqi.pojo.ShopcartBean">
-        select  milktea.image
+        select milktea.image
 
         from shopcart_detail
                  join milktea on shopcart_detail.milkteaid = milktea.id
@@ -24,6 +24,17 @@
 
         where shopcart_detail.userid = #{userid};
     </select>
+
+
+
+
+
+    <select id="selectByid" resultType="com.ityunqi.pojo.AddShopcartBean">
+        select milktea.id, milktea.milkteaname, milktea.introduce, milktea.price, milktea.image
+        from milktea
+        where milktea.id = #{id};
+    </select>
+
 
 
 

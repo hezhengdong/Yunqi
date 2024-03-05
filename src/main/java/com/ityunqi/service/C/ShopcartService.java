@@ -9,6 +9,8 @@ public interface ShopcartService {
     //======================只跟购物车相关的===========================
     List<ShopcartBean> selectAll(int userid);
 
+    AddShopcartBean selectByid(int id);
+
     void update(int milkteaid, int count, int userid);
 
     void delete(int milkteaid, int userid);
@@ -34,5 +36,8 @@ public interface ShopcartService {
     //======================跟奶茶相关的===========================
 
     void updateBymt(int salenumber, int id);
+
+    //======================根据用户名查id===========================
+    int selectUserid(String username);
 
 }

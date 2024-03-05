@@ -69,20 +69,33 @@ public class ShopcartServlet extends BaseServlet {
     public void selectAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         //===================一、获取cookie=====================
-        //int userid = getUserid(req,resp);
-        //if (userid != -1) {
-        int userid=1;
+        int userid = getUserid(req,resp);
+        if (userid != -1) {
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        // 允许携带 cookie
+        resp.setHeader("Access-Control-Allow-Credentials", "true");
             //===================二、调用方法查询所有=====================
             List<ShopcartBean> shopcarts = shopcartService.selectAll(userid);
-            ShopcartBean shopcartBean = shopcarts.get(0);
             //===================三、响应数据=====================
-            //String jsonString = JSON.toJSONString(Result.success(shopcarts));
-            String jsonString = JSON.toJSONString(Result.success(shopcartBean.getImage()));
+            String jsonString = JSON.toJSONString(Result.success(shopcarts));
             resp.setContentType("application/json;charset=utf-8");
             resp.getWriter().write(jsonString);
-        //}
+        }
     }
 
+    public void selectByid(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String _id = req.getParameter("id");
+        System.out.println(_id);
+        int id = Integer.parseInt(_id);
+        System.out.println(id);
+        //===================二、调用方法查询所有=====================
+        AddShopcartBean addShopcartBean = shopcartService.selectByid(id);
+        //===================三、响应数据===========================
+        String jsonString = JSON.toJSONString(Result.success(addShopcartBean));
+        System.out.println(jsonString);
+        resp.setContentType("application/json;charset=utf-8");
+        resp.getWriter().write(jsonString);
+    }
     /**
      * 增加购物车奶茶数据
      *

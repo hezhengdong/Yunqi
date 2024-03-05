@@ -28,6 +28,18 @@ public class ShopcartServiceImpl implements ShopcartService {
     }
 
     @Override
+    public AddShopcartBean selectByid(int id) {
+        SqlSession sqlSession = factory.openSession();
+
+        ShopcartMapper mapper = sqlSession.getMapper(ShopcartMapper.class);
+
+        AddShopcartBean addShopcartBean = mapper.selectByid(id);
+
+        sqlSession.close();
+        return addShopcartBean;
+    }
+
+    @Override
     public void add(ShopcartDetail shopcartDetail) {
         
         SqlSession sqlSession = factory.openSession();
@@ -171,6 +183,18 @@ public class ShopcartServiceImpl implements ShopcartService {
         sqlSession.commit();
         
         sqlSession.close();
+    }
+
+    @Override
+    public int selectUserid(String username) {
+        SqlSession sqlSession = factory.openSession();
+
+        ShopcartMapper mapper = sqlSession.getMapper(ShopcartMapper.class);
+
+        int id = mapper.selectUserid(username);
+
+        sqlSession.close();
+        return id;
     }
 
 }

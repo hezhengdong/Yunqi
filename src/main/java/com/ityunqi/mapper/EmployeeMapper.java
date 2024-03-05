@@ -6,14 +6,9 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 public interface EmployeeMapper {
-    /**
-     * 根据用户名和密码查询用户对象
-     * @param number
-     * @param accesskey
-     * @return
-     */
-    @Select("select * from employee where number = #{number} and accesskey = #{accesskey}")
-    Employee select(@Param("number") String number, @Param("password")  String accesskey);
+
+    @Select("select * from employee where number = #{number}")
+    Employee login(String number);
 
     /**
      * 根据用户名查询用户对象
@@ -28,6 +23,6 @@ public interface EmployeeMapper {
      * @param employee
      */
     @Insert("insert into employee values(null,#{number},#{accesskey})")
-    void add(Employee employee);
+    void register(Employee employee);
 }
 

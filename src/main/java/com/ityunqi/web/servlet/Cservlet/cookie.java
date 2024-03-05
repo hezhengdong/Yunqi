@@ -20,7 +20,7 @@ public class cookie extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Cookie cookie = new Cookie("userid", "2");
+        Cookie cookie = new Cookie("userid", "1");
         resp.addCookie(cookie);
         System.out.println("成功设置cookie");
 

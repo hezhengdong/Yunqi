@@ -1,13 +1,11 @@
-package com.ityunqi.mapper;
+package com.ityunqi.service.D;
 
 import com.ityunqi.pojo.OrderBean;
 
 import java.util.List;
 
-public interface OrderMapper {
-
+public interface OrderService {
 
     List<OrderBean> selectAll();
-
 
 }
