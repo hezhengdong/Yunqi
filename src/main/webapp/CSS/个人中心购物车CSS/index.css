@@ -26,7 +26,7 @@
     height: 100%;
     background: 
     /* #707179 */
-    url(https://sandwich-zhang.oss-cn-beijing.aliyuncs.com/loge.png)no-repeat;
+    url(https://sandwich-zhang.oss-cn-beijing.aliyuncs.com/logo.png)no-repeat;
     background-position: left 10px center;
     background-size: 90% 80%;
 }
@@ -123,7 +123,7 @@
     /* lightcoral */
     url(https://sandwich-zhang.oss-cn-beijing.aliyuncs.com/登录.png)no-repeat;
     background-position: center;
-    background-size: 100% 40%;
+    background-size: 80% 40%;
 }
 
 .right-logo1 {
@@ -212,6 +212,9 @@
     height: 90%;
     background-color: blueviolet;
     border-radius: 12%;
+    /* background-image: url("https://yunqi-icecity.oss-cn-beijing.aliyuncs.com/YunqiIceCity/YunqiIceCityImage/11.png"); */
+    background-size: cover;
+    background-position: center;
 }
 
 .jieSuan {

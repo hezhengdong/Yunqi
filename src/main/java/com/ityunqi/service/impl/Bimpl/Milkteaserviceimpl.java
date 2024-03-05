@@ -36,7 +36,7 @@ public class Milkteaserviceimpl implements Milkteaservice {
     }
 
     @Override
-    public int deletebyid(int id) {
+    public void deletebyid(int id) {
         SqlSession sqlSession = sessionFactory.openSession();
         MilkteaMapper mapper = sqlSession.getMapper(MilkteaMapper.class);
         mapper.deletebyid(id);
@@ -44,17 +44,17 @@ public class Milkteaserviceimpl implements Milkteaservice {
         sqlSession.close();
 
 
-        return 0;
+
     }
 
     @Override
-    public int update(Milktea milktea) {
+    public void update(Milktea milktea) {
         SqlSession sqlSession = sessionFactory.openSession();
         MilkteaMapper mapper = sqlSession.getMapper(MilkteaMapper.class);
         mapper.update(milktea);
         sqlSession.commit();
         sqlSession.close();
-        return 0;
+
     }
 
     @Override
