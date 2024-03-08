@@ -24,10 +24,12 @@
     display: flex;
     width: 5%;
     height: 100%;
-    background: 
-    /* #707179 */
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background:
+    #FFB501 
     url(https://sandwich-zhang.oss-cn-beijing.aliyuncs.com/logo.png)no-repeat;
-    background-position: left 10px center;
+    background-position: left 7.6px center;
     background-size: 90% 80%;
 }
 
@@ -39,7 +41,9 @@
     height: 100%;
     font-size: 30px;
     /* color: white; */
-    /* background-color: #707179; */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #FFB501;
 }
 
 .brand-intro {
@@ -208,6 +212,9 @@
 }
 
 .tea {
+    display: flex;
+    align-items: end;
+    position: relative;
     width: 26%;
     height: 90%;
     background-color: blueviolet;
@@ -217,10 +224,164 @@
     background-position: center;
 }
 
+.teaName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 14%;
+    font-size: 22px;
+    background: violet;
+}
+
+.addButton {
+    width: 20%;
+    height: 12%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: url(https://sandwich-zhang.oss-cn-beijing.aliyuncs.com/加号.png)no-repeat;
+}
+
+.addButton.active {
+    transform: scale(1.2);
+}
+
+.milkTeaNumber {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 14%;
+    font-size: 30px;
+    background: brown;
+}
+
+.minusButton {
+    width: 20%;
+    height: 12%;
+    background: url(https://sandwich-zhang.oss-cn-beijing.aliyuncs.com/减号.png)no-repeat;
+}
+
 .jieSuan {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: absolute;
     bottom: 0px;
     width: 100%;
-    height: 6%;
+    height: 8%;
+    background: white;
+}
+
+.selectAll {
+    display: flex;
+    margin-left: 6%;
+    align-items: center;
+    width: 10%;
+    height: 80%;
     background: pink;
+}
+
+/* .selectAllButton {
+    width: 30%;
+    height: 80%;
+    border-radius: 50%;
+    border: 5px solid;
+} */
+
+.selectAllButton {
+    position: relative;
+    /* 确保内部的div可以相对于这个button定位 */
+    width: 30%;
+    height: 80%;
+    border-radius: 50%;
+    border: 5px solid;
+    background-color: transparent;
+    /* 确保按钮背景透明 */
+    cursor: pointer;
+    /* 鼠标悬停时显示为手型 */
+}
+
+.check-mark {
+    position: absolute;
+    top: 50%;
+    /* 垂直居中 */
+    left: 50%;
+    /* 水平居中 */
+    transform: translate(-50%, -50%);
+    /* 调整位置确保对号在中心 */
+    width: 60%;
+    /* 对号大小相对于按钮 */
+    height: 60%;
+    border-radius: 50%;
+    background-color: transparent;
+    /* 初始时隐藏对号 */
+    transition: background-color 0.3s ease;
+    /* 添加过渡效果 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-mark::before {
+    content: "✓";
+    /* 对号字符 */
+    font-size: 80%;
+    /* 调整字号 */
+    color: transparent;
+    /* 初始时隐藏对号 */
+    transition: color 0.3s ease;
+    /* 添加过渡效果 */
+}
+
+.selectAllButton.active .check-mark {
+    background-color: white;
+    /* 当按钮激活时显示白色背景 */
+}
+
+.selectAllButton.active .check-mark::before {
+    color: black;
+    /* 当按钮激活时显示黑色对号 */
+}
+
+.selectAllText {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+}
+
+.totalMoney {
+    display: flex;
+    width: 20%;
+    height: 80%;
+    background: chartreuse;
+}
+
+.heJi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    font-size: 24px;
+    background: chocolate;
+}
+
+.money {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 100%;
+    font-size: 30px;
+    background: coral;
+}
+
+.jieSuanButton {
+    width: 50%;
+    height: 100%;
+    font-size: 30px;
+    color: white;
+    border-radius: 40px;
+    background: #E17222;
 }
