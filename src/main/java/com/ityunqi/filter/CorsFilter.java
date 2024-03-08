@@ -69,3 +69,32 @@ public class CorsFilter implements WebMvcConfigurer {
                 .allowedHeaders("*");
     }
 }*/
+
+/*
+@WebFilter(filterName = "Filter_CrossOrigin",urlPatterns = "/*")
+public class Filter_CrossOrigin implements Filter {
+    public void init(FilterConfig config) throws ServletException {
+    }
+
+    public void destroy() {
+    }
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
+        HttpServletRequest request1 = (HttpServletRequest) request;
+        HttpServletResponse response1 = (HttpServletResponse) response;
+        response1.setCharacterEncoding("utf-8");
+        request1.setCharacterEncoding("utf-8");
+        System.out.println("过滤器执行了");
+        response1.setHeader("Access-Control-Allow-Origin", request1.getHeader("origin"));
+        response1.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE");
+        response1.setHeader("Access-Control-Max-Age", "3600");
+        response1.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+        response1.setHeader("Access-Control-Allow-Credentials", "true");
+        if ("OPTIONS".equalsIgnoreCase(request1.getMethod())) {
+            response1.setStatus(HttpServletResponse.SC_OK); // 设置状态码为200 OK
+            return;
+        }
+        chain.doFilter(request1, response1);
+    }
+}*/

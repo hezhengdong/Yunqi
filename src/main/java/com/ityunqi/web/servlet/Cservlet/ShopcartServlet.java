@@ -49,8 +49,10 @@ public class ShopcartServlet extends BaseServlet {
         for (Cookie cookie : cookies) {
             //3. 获取数据
             String name = cookie.getName();
+            System.out.println(name);
             if ("userid".equals(name)) {
                 value = cookie.getValue();
+                System.out.println(value);
                 break;
             }
         }

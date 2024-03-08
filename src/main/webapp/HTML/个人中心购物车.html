@@ -6,11 +6,11 @@
     <title>个人中心购物车</title>
     <link
       rel="stylesheet"
-      href="\src\main\webapp\CSS\个人中心购物车CSS\common.css"
+      href="../CSS/个人中心购物车CSS/common.css"
     />
     <link
       rel="stylesheet"
-      href="\src\main\webapp\CSS\个人中心购物车CSS\index.css"
+      href="../CSS/个人中心购物车CSS/index.css"
     />
     <!-- <script src="\src\main\webapp\javascript\个人中心购物车.js"></script> -->
   </head>
@@ -96,7 +96,8 @@
       //图片获取,奶茶名获取，奶茶数量获取,获取id用于修改数量的接口
       document.addEventListener("DOMContentLoaded", (event) => {
         const apiUrl =
-          "https://vast-suitably-ram.ngrok-free.app/YunqiIceCity/shopcart/selectAll";
+           //     "http://localhost:8080/YunqiIceCity/shopcart/selectAll2";
+           "https://vast-suitably-ram.ngrok-free.app/YunqiIceCity/shopcart/selectAll2";
           // "https://vast-suitably-ram.ngrok-free.app/YunqiIceCity/setCookie";
         const headers = new Headers();
         headers.append("ngrok-skip-browser-warning", "abab");
@@ -104,7 +105,7 @@
 
         fetch(apiUrl, {
           method: "GET",
-          // credentials: 'include',
+          credentials: 'include',
           headers: headers,
         })
           .then((response) => {

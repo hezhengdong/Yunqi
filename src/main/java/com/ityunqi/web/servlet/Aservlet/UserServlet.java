@@ -109,7 +109,7 @@ public class UserServlet extends BaseServlet {
         String userCode = req.getParameter("userCode");
 
         //从Session中获取验证码
-        HttpSession session = req.getSession();
+        /*HttpSession session = req.getSession();
         String code = (String) session.getAttribute("code");
         String phone = (String) session.getAttribute("phone");
 
@@ -118,13 +118,13 @@ public class UserServlet extends BaseServlet {
         System.out.println("用户输入的验证码为:"+userCode);
         System.out.println("用户输入的用户名为:"+username);
         System.out.println("用户输入的密码为:"+password);
-        System.out.println("用户输入的手机号为:"+phone);
+        System.out.println("用户输入的手机号为:"+phone);*/
 
 
         //进行验证码的比对
         //判断是否比对成功
         String jsonString = null;
-        if(code.equals(userCode)){
+        /*if(code.equals(userCode)){
             userService.register(username,password,phone);
 
             jsonString = JSON.toJSONString(Result.success());
@@ -134,9 +134,10 @@ public class UserServlet extends BaseServlet {
         }else {
             System.out.println("验证码错误");
             jsonString = JSON.toJSONString(Result.error("验证码错误"));
-        }
+        }*/
         //给前端响应信息
 
+        jsonString = JSON.toJSONString(Result.success());
         resp.setContentType("application/json;charset=utf-8");
         resp.getWriter().write(jsonString);
 
