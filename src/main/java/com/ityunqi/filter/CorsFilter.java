@@ -15,12 +15,18 @@ public class CorsFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
+        //response.setHeader("Access-Control-Allow-Origin", "https://fit-decent-sawfish.ngrok-free.app");
+        //response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500/src/main/webapp/HTML/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%B4%AD%E7%89%A9%E8%BD%A6.html");
+        //response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500/src/main/webapp/HTML/个人中心购物车.html");
+
         // 设置允许的来源
         response.setHeader("Access-Control-Allow-Origin", "*");
         // 设置允许的方法
         response.setHeader("Access-Control-Allow-Methods", "*");
         // 设置允许的头部信息
-        response.setHeader("Access-Control-Allow-Headers", "*");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization,ngrok-skip-browser-warning");
+
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         // 设置预检请求的有效期，单位为秒
         response.setHeader("Access-Control-Max-Age", "3600");
 
@@ -45,3 +51,21 @@ public class CorsFilter implements Filter {
         //销毁操作
     }
 }
+
+/*import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+
+@Configuration
+public class CorsFilter implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOriginPatterns("*")
+                .allowedMethods("GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowCredentials(true)
+                .maxAge(3600)
+                .allowedHeaders("*");
+    }
+}*/
