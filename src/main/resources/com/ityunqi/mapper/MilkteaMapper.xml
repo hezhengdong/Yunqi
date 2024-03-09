@@ -18,6 +18,20 @@
         select *
         from dbyunqi.milktea
         ORDER BY salenumber DESC
+
+    </select>
+    <select id="selectall2" resultType="com.ityunqi.pojo.Milktea">
+        select dbyunqi.milktea.id,
+               dbyunqi.milktea.salenumber,
+               dbyunqi.milktea.count,
+               dbyunqi.milktea.image,
+               dbyunqi.milktea.introduce,
+               dbyunqi.milktea.price,
+               milktea.milkteaname,
+               dbyunqi.kind.kindname
+        from dbyunqi.milktea
+                 left join dbyunqi.kind
+                           on dbyunqi.milktea.kindid = dbyunqi.kind.id;
     </select>
 
 </mapper>

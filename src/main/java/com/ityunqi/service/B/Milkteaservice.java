@@ -12,4 +12,5 @@ public interface Milkteaservice {
 
     List<Milktea> kindidselect(int kindid);
     List<Milktea> salenumberselect();
+    public List<Milktea> selectall2();
 }
