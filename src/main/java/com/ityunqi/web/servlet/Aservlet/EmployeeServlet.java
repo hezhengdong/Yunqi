@@ -25,6 +25,10 @@ public class EmployeeServlet extends BaseServlet {
         String accesskey = req.getParameter("accesskey");
         Employee employee = employeeService.login(number);
 
+        System.out.println(number);
+        System.out.println(accesskey);
+
+
         String jsonString = null;
 
         if (number.length()==0){
@@ -38,6 +42,7 @@ public class EmployeeServlet extends BaseServlet {
         } else {
             jsonString = JSON.toJSONString(Result.success());
         }
+        System.out.println(jsonString);
 
         resp.setContentType("application/json;charset=utf-8");
         resp.getWriter().write(jsonString);

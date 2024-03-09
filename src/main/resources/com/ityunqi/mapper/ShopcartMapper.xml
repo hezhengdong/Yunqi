@@ -7,7 +7,7 @@
     <!--milktea.id, milktea.milkteaname, shopcart_detail.count, milktea.price-->
     <!--给购物车返回数据-->
     <select id="selectAll" resultType="com.ityunqi.pojo.ShopcartBean">
-        select milktea.image
+        select milktea.id,milktea.milkteaname, shopcart_detail.count, milktea.image
 
         from shopcart_detail
                  join milktea on shopcart_detail.milkteaid = milktea.id

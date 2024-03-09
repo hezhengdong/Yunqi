@@ -26,7 +26,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void register(User user) {
+    public void register(String username, String password, String phone) {
+        SqlSession sqlSession = factory.openSession();
 
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        mapper.register(username,password,phone);
+
+        sqlSession.commit();
+
+        sqlSession.close();
     }
 }

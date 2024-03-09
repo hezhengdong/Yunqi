@@ -18,11 +18,8 @@ public interface UserMapper {
     @Select("select * from user where username = #{username}")
     User selectByUsername(String username);
 
-    /**
-     * 添加用户
-     * @param user
-     */
-    @Insert("insert into user values(null,#{username},#{password})")
-    void add(User user);
-}
 
+    @Insert("insert into user values(null,#{username},#{password},#{phone})")
+    void register(@Param("username") String username, @Param("password") String password, @Param("phone") String phone);
+
+}
