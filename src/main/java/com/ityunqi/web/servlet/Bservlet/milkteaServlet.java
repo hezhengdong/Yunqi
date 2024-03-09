@@ -46,10 +46,12 @@ public class milkteaServlet extends BaseServlet {
 
     }
 
-
-
-
-
+    public void selectall2(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+        List<Milktea> milkteas = milkteaservice.selectall();
+        String jsonString = JSON.toJSONString(Result.success(milkteas));
+        httpServletResponse.setContentType("application/json;charset=utf-8");
+        httpServletResponse.getWriter().write(jsonString);
+    }
 
 
     public void update(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
@@ -89,7 +91,6 @@ public class milkteaServlet extends BaseServlet {
         String jsonString = JSON.toJSONString(Result.success(milkteas));
         httpServletResponse.setContentType("application/json;charset=utf-8");
         httpServletResponse.getWriter().write(jsonString);
-
 
 
     }

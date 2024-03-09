@@ -10,8 +10,9 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface MilkteaMapper {
-    @Select("select * from dbyunqi.milktea")
+@Select("select * from dbyunqi.milktea")
     public List<Milktea> selectall();
+    public List<Milktea>  selectall2();
 
     @Insert("insert into dbyunqi.milktea values(null,#{milkteaname},#{introduce},#{kindid},#{price},#{count},#{salenumber},#{image}) ")
     void add(Milktea milktea);
@@ -26,4 +27,5 @@ public interface MilkteaMapper {
     public List<Milktea> kindidselect(int kindid);
 
     public List<Milktea> salenumberselect();
+
 }
