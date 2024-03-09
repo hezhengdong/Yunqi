@@ -22,4 +22,11 @@ public interface UserMapper {
     @Insert("insert into user values(null,#{username},#{password},#{phone})")
     void register(@Param("username") String username, @Param("password") String password, @Param("phone") String phone);
 
+
+    //=========================要有一个根据用户名查id的方法======================
+
+
+    @Select("select id from user where username = #{username}")
+    int selectUserid(String username);
+
 }

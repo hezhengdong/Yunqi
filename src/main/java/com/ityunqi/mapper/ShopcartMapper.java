@@ -129,10 +129,5 @@ public interface ShopcartMapper {
     @Update("update milktea set salenumber = salenumber + #{salenumber} where id = #{id};")
     void updateBymt(@Param("salenumber") int salenumber,@Param("id") int id);
 
-    //=========================要有一个根据用户名查id的方法======================
-
-
-    @Select("select id from user where username = #{username}")
-    int selectUserid(String username);
 
 }

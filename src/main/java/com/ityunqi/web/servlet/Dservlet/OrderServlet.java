@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@CrossOrigin(origins = "*")
 @WebServlet("/order/*")
 public class OrderServlet extends BaseServlet {
     private OrderService orderService = new OrderServiceImpl();

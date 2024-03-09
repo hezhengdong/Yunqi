@@ -1,0 +1,368 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  background-color: #ecf0f3;
+  /* background-color: #2c72c2; */
+  color: #a0a5a8;
+}
+.usernamemeg {
+  position: absolute;
+  left: 685px;
+  top: 193px;
+  color: red;
+}
+.passwordmeg1 {
+  position: absolute;
+  left: 685px;
+  top: 233px;
+  color: red;
+}
+.passwordmeg2 {
+  position: absolute;
+  left: 685px;
+  top: 288px;
+  color: red;
+}
+.phonemeg {
+  position: absolute;
+  left: 685px;
+  top: 337px;
+  color: red;
+}
+.verificationmeg {
+  position: absolute;
+  left: 685px;
+  top: 385px;
+  color: red;
+}
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.container span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  /* border: #fff; */
+  background-color: #fff;
+  border-radius: 50%;
+  /*发光效果*/
+  box-shadow: 0 0 0 4px rgb(255, 255, 255, 0.1),
+    0 0 0 8px rgb(255, 255, 255, 0.1), 0 0 20px rgb(255, 255, 255, 1);
+  /*执行动画*/
+  animation: animate1 3s linear infinite;
+}
+/*拖尾效果*/
+.container span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 3px;
+  background: linear-gradient(90deg, #fff, transparent);
+}
+/*接下来为每个流星设置位置，动画延时时间，动画时长*/
+.container span:nth-child(1) {
+  top: 0;
+  right: 0;
+  /*关键字用于设置css属性为它的默认值*/
+  left: initial;
+  animation-delay: 0s;
+  animation-duration: 1s;
+}
+.container span:nth-child(2) {
+  top: 0;
+  right: 80px;
+  /*关键字用于设置css属性为它的默认值*/
+  left: initial;
+  animation-delay: 0.2s;
+  animation-duration: 3s;
+}
+.container span:nth-child(3) {
+  top: 80px;
+  right: 0;
+  /*关键字用于设置css属性为它的默认值*/
+  left: initial;
+  animation-delay: 0.4s;
+  animation-duration: 2s;
+}
+.container span:nth-child(4) {
+  top: 0;
+  right: 180px;
+  /*关键字用于设置css属性为它的默认值*/
+  left: initial;
+  animation-delay: 0.6s;
+  animation-duration: 1.5s;
+}
+.container span:nth-child(5) {
+  top: 0;
+  right: 400px;
+  /*关键字用于设置css属性为它的默认值*/
+  left: initial;
+  animation-delay: 0.8s;
+  animation-duration: 2.5s;
+}
+.container span:nth-child(6) {
+  top: 0;
+  right: 600px;
+  /*关键字用于设置css属性为它的默认值*/
+  left: initial;
+  animation-delay: 1s;
+  animation-duration: 3s;
+}
+.container span:nth-child(7) {
+  top: 300px;
+  right: 600px;
+  /*关键字用于设置css属性为它的默认值*/
+  left: initial;
+  animation-delay: 1.2s;
+  animation-duration: 1.75s;
+}
+.container span:nth-child(8) {
+  top: 0;
+  right: 700px;
+  /*关键字用于设置css属性为它的默认值*/
+  left: initial;
+  animation-delay: 1.4s;
+  animation-duration: 1.25s;
+}
+.container span:nth-child(9) {
+  top: 0;
+  right: 1000px;
+  /*关键字用于设置css属性为它的默认值*/
+  left: initial;
+  animation-delay: 0.75s;
+  animation-duration: 2.25s;
+}
+.container span:nth-child(10) {
+  top: 0;
+  right: 450px;
+  /*关键字用于设置css属性为它的默认值*/
+  left: initial;
+  animation-delay: 2.75s;
+  animation-duration: 2.25s;
+}
+/*流星划过动画*/
+@keyframes animate1 {
+  0% {
+    transform: rotate(315deg);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(315deg) translateX(-1000px);
+    opacity: 0;
+  }
+}
+.container2 {
+  position: absolute;
+  display: flex;
+  top: 100px;
+  left: 100px;
+  width: 200px;
+  height: 200px;
+}
+.welcome {
+  position: absolute;
+  left: 20%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+}
+.bubble {
+  width: 100%;
+  height: 100%;
+  /*径向渐变*/
+  background: radial-gradient(
+    circle at 75% 30%,
+    #fff 5px,
+    #ff21c0 8%,
+    #5b5b5b 60%,
+    #ff21c0
+  );
+  border-radius: 50%;
+  /*阴影*/
+  box-shadow: inset 0 0 20px #fff, inset 10px 0 46px #eaf5fc,
+    inset 80px 0 60px #efcde6, inset -20px -60px 100px #f9f6de,
+    inset 0 50px 140px #f9f6de, 0 0 90px #fff;
+  animation: bubble 4s ease-in-out infinite;
+}
+.shodow {
+  position: absolute;
+  background-color: rgb(0, 0, 0, 0.15);
+  width: 150px;
+  height: 40px;
+  border-radius: 50%;
+  left: 50%;
+  margin-left: -75px;
+  bottom: -100px;
+  /*一点模糊效果*/
+  filter: blur(1px);
+  animation: shodow 4s ease-in-out infinite;
+}
+/*定义泡泡动画*/
+@keyframes bubble {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-80px);
+  }
+}
+/*投影动画*/
+/* @keyframes shodow {
+  0%,
+  100% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1);
+  }
+} */
+.photo {
+  padding-left: 0px;
+  margin-top: 0px;
+  margin-left: 0px;
+  position: absolute;
+  width: 100px;
+  height: inherit;
+  background-color: khaki;
+}
+.shell {
+  position: relative;
+  width: 1000px;
+  min-width: 1000px;
+  min-height: 600px;
+  height: 600px;
+  /* padding: 25px; */
+  /* background-color: #ecf0f3; */
+  background: linear-gradient(150deg, #d299c2, #fef9d7);
+  /* background-color: #2c72c2; */
+  box-shadow: 10px 10px 10px #d1d9e6, -10px -10px 10px #f9f9f9;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.form {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.form_input {
+  width: 350px;
+  height: 40px;
+  margin: 4px 0;
+  padding-left: 25px;
+  font-size: 13px;
+  letter-spacing: 0.15px;
+  border: none;
+  outline: none;
+  background-color: #ecf0f3;
+  transition: 0.25s ease;
+  border-radius: 8px;
+  box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
+}
+
+.form_input:focus {
+  box-shadow: inset 4px 4px 4px #d1d9e6, inset -4px -4px 4px #f9f9f9;
+}
+.title {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 3;
+  color: #181818;
+  letter-spacing: 10px;
+}
+#register div.iconfont1 {
+  position: absolute;
+  left: 641px;
+  top: 239px;
+  font-size: 23px;
+}
+.iconfont1 a {
+  text-decoration: none;
+  color: #000;
+}
+/*获取验证码的按钮*/
+.verification {
+  position: relative;
+  z-index: 19;
+  left: 284px;
+  top: 17px;
+  display: inline-block;
+  height: 50px;
+  width: 143px;
+  font-size: 18px;
+  border-radius: 40px;
+  background-position: -300px;
+  background-size: 300%;
+  overflow: hidden;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 0%;
+  color: rgb(236, 122, 107);
+  border: none;
+  box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
+  cursor: pointer;
+}
+.creat {
+  position: absolute;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  left: 10px;
+  top: 10px;
+  border-radius: 50%;
+  animation: dynamicbutton 1s linear infinite;
+}
+/*定义获取验证码按钮的动画*/
+@keyframes dynamicbutton {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    width: 500px;
+    height: 500px;
+    opacity: 0;
+  }
+}
+.button {
+  width: 180px;
+  height: 50px;
+  border-radius: 25px;
+  margin-top: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1.15px;
+  background-color: #4b70e2;
+  color: #f9f9f9;
+  box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #f9f9f9;
+  border: none;
+  outline: none;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 150%;
+  cursor: pointer;
+}

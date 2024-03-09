@@ -185,16 +185,5 @@ public class ShopcartServiceImpl implements ShopcartService {
         sqlSession.close();
     }
 
-    @Override
-    public int selectUserid(String username) {
-        SqlSession sqlSession = factory.openSession();
-
-        ShopcartMapper mapper = sqlSession.getMapper(ShopcartMapper.class);
-
-        int id = mapper.selectUserid(username);
-
-        sqlSession.close();
-        return id;
-    }
 
 }

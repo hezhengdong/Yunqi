@@ -37,7 +37,4 @@ public interface ShopcartService {
 
     void updateBymt(int salenumber, int id);
 
-    //======================根据用户名查id===========================
-    int selectUserid(String username);
-
 }

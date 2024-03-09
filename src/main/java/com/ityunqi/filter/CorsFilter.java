@@ -16,8 +16,6 @@ public class CorsFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         //response.setHeader("Access-Control-Allow-Origin", "https://fit-decent-sawfish.ngrok-free.app");
-        //response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500/src/main/webapp/HTML/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%B4%AD%E7%89%A9%E8%BD%A6.html");
-        //response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500/src/main/webapp/HTML/个人中心购物车.html");
 
         // 设置允许的来源
         response.setHeader("Access-Control-Allow-Origin", "*");
@@ -51,50 +49,3 @@ public class CorsFilter implements Filter {
         //销毁操作
     }
 }
-
-/*import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-
-@Configuration
-public class CorsFilter implements WebMvcConfigurer {
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOriginPatterns("*")
-                .allowedMethods("GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowCredentials(true)
-                .maxAge(3600)
-                .allowedHeaders("*");
-    }
-}*/
-
-/*
-@WebFilter(filterName = "Filter_CrossOrigin",urlPatterns = "/*")
-public class Filter_CrossOrigin implements Filter {
-    public void init(FilterConfig config) throws ServletException {
-    }
-
-    public void destroy() {
-    }
-
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-        HttpServletRequest request1 = (HttpServletRequest) request;
-        HttpServletResponse response1 = (HttpServletResponse) response;
-        response1.setCharacterEncoding("utf-8");
-        request1.setCharacterEncoding("utf-8");
-        System.out.println("过滤器执行了");
-        response1.setHeader("Access-Control-Allow-Origin", request1.getHeader("origin"));
-        response1.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE");
-        response1.setHeader("Access-Control-Max-Age", "3600");
-        response1.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-        response1.setHeader("Access-Control-Allow-Credentials", "true");
-        if ("OPTIONS".equalsIgnoreCase(request1.getMethod())) {
-            response1.setStatus(HttpServletResponse.SC_OK); // 设置状态码为200 OK
-            return;
-        }
-        chain.doFilter(request1, response1);
-    }
-}*/

@@ -31,7 +31,7 @@ public class Email {
         String param = a + code + b;
         querys.put("param", param);
         //smsSignId（短信前缀）和templateId（短信模板），可登录国阳云控制台自助申请。参考文档：http://help.guoyangyun.com/Problem/Qm.html
-        querys.put("smsSignId", "2e65b1bb3d054466b82f0c9d125465e2");//短信前缀
+        querys.put("smsSignId", "6970a4c1216b4d15999971e998fa7574");//短信前缀
         querys.put("templateId", "a09602b817fd47e59e7c6e603d3f088d");//短信模板
 
 

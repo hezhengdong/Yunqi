@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "*")
 @WebServlet("/shopcart/*")
 public class ShopcartServlet extends BaseServlet {
 

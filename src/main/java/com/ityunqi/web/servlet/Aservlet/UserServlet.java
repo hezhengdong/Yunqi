@@ -11,6 +11,7 @@ import com.ityunqi.web.servlet.BaseServlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -40,6 +41,13 @@ public class UserServlet extends BaseServlet {
         } else if (!user.getPassword().equals(password)) {
             jsonString = JSON.toJSONString(Result.error("密码输入错误"));
         } else {
+
+            int userid = userService.selectUserid(username);
+
+            Cookie cookie = new Cookie("userid", String.valueOf(userid));
+            resp.addCookie(cookie);
+            System.out.println("成功设置cookie,为userid="+userid);
+
             jsonString = JSON.toJSONString(Result.success());
         }
         System.out.println(jsonString);
@@ -77,6 +85,7 @@ public class UserServlet extends BaseServlet {
             Email email = new Email();
             //这个方法好像能自动返回报错数据
             email.sendSms(phone,code);
+            System.out.println("短信发送成功");
 
             //4. 把验证码保存到Session
             session.setAttribute("code",code);
@@ -106,10 +115,11 @@ public class UserServlet extends BaseServlet {
         //获取用户输入的验证码
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        String userCode = req.getParameter("userCode");
+        String userCode = req.getParameter("verification");
+        System.out.println(userCode);
 
         //从Session中获取验证码
-        /*HttpSession session = req.getSession();
+        HttpSession session = req.getSession();
         String code = (String) session.getAttribute("code");
         String phone = (String) session.getAttribute("phone");
 
@@ -118,15 +128,15 @@ public class UserServlet extends BaseServlet {
         System.out.println("用户输入的验证码为:"+userCode);
         System.out.println("用户输入的用户名为:"+username);
         System.out.println("用户输入的密码为:"+password);
-        System.out.println("用户输入的手机号为:"+phone);*/
+        System.out.println("用户输入的手机号为:"+phone);
 
 
         //进行验证码的比对
         //判断是否比对成功
         String jsonString = null;
-        /*if(code.equals(userCode)){
+        if(code.equals(userCode)){
             userService.register(username,password,phone);
-
+            System.out.println("增加方法执行成功");
             jsonString = JSON.toJSONString(Result.success());
         } else if (code==null) {
             System.out.println("你没在session中获取到验证码");
@@ -134,10 +144,9 @@ public class UserServlet extends BaseServlet {
         }else {
             System.out.println("验证码错误");
             jsonString = JSON.toJSONString(Result.error("验证码错误"));
-        }*/
+        }
         //给前端响应信息
 
-        jsonString = JSON.toJSONString(Result.success());
         resp.setContentType("application/json;charset=utf-8");
         resp.getWriter().write(jsonString);
 

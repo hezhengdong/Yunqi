@@ -1,6 +1,7 @@
 package com.ityunqi.service.impl.Aimpl;
 
 import com.ityunqi.mapper.EmployeeMapper;
+import com.ityunqi.mapper.ShopcartMapper;
 import com.ityunqi.mapper.UserMapper;
 import com.ityunqi.pojo.Employee;
 import com.ityunqi.pojo.User;
@@ -36,5 +37,18 @@ public class UserServiceImpl implements UserService {
         sqlSession.commit();
 
         sqlSession.close();
+    }
+
+
+    @Override
+    public int selectUserid(String username) {
+        SqlSession sqlSession = factory.openSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        int id = mapper.selectUserid(username);
+
+        sqlSession.close();
+        return id;
     }
 }
