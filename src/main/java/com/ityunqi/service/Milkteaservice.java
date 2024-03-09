@@ -1,4 +1,4 @@
-package com.ityunqi.service.B;
+package com.ityunqi.service;
 
 import com.ityunqi.pojo.Milktea;
 

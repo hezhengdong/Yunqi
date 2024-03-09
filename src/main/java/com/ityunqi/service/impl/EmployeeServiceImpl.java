@@ -1,15 +1,11 @@
-package com.ityunqi.service.impl.Aimpl;
+package com.ityunqi.service.impl;
 
 import com.ityunqi.mapper.EmployeeMapper;
-import com.ityunqi.mapper.ShopcartMapper;
 import com.ityunqi.pojo.Employee;
-import com.ityunqi.pojo.ShopcartBean;
-import com.ityunqi.service.A.EmployeeService;
+import com.ityunqi.service.EmployeeService;
 import com.ityunqi.util.SqlSessionFactoryUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-
-import java.util.List;
 
 public class EmployeeServiceImpl implements EmployeeService {
 

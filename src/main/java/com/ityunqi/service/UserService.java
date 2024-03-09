@@ -1,4 +1,4 @@
-package com.ityunqi.service.A;
+package com.ityunqi.service;
 
 import com.ityunqi.pojo.User;
 

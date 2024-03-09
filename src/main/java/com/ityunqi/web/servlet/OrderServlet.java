@@ -1,13 +1,10 @@
-package com.ityunqi.web.servlet.Dservlet;
+package com.ityunqi.web.servlet;
 
 import com.alibaba.fastjson.JSON;
 import com.ityunqi.pojo.OrderBean;
 import com.ityunqi.pojo.Result;
-import com.ityunqi.pojo.ShopcartBean;
-import com.ityunqi.service.D.OrderService;
-import com.ityunqi.service.impl.Dimpl.OrderServiceImpl;
-import com.ityunqi.web.servlet.BaseServlet;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import com.ityunqi.service.OrderService;
+import com.ityunqi.service.impl.OrderServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

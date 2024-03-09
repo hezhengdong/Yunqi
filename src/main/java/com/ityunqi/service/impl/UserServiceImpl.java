@@ -1,11 +1,8 @@
-package com.ityunqi.service.impl.Aimpl;
+package com.ityunqi.service.impl;
 
-import com.ityunqi.mapper.EmployeeMapper;
-import com.ityunqi.mapper.ShopcartMapper;
 import com.ityunqi.mapper.UserMapper;
-import com.ityunqi.pojo.Employee;
 import com.ityunqi.pojo.User;
-import com.ityunqi.service.A.UserService;
+import com.ityunqi.service.UserService;
 import com.ityunqi.util.SqlSessionFactoryUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

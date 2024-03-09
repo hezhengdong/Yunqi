@@ -1,11 +1,10 @@
-package com.ityunqi.web.servlet.Bservlet;
+package com.ityunqi.web.servlet;
 
 import com.alibaba.fastjson.JSON;
 import com.ityunqi.pojo.Milktea;
 import com.ityunqi.pojo.Result;
-import com.ityunqi.service.B.Milkteaservice;
-import com.ityunqi.service.impl.Bimpl.Milkteaserviceimpl;
-import com.ityunqi.web.servlet.BaseServlet;
+import com.ityunqi.service.Milkteaservice;
+import com.ityunqi.service.impl.Milkteaserviceimpl;
 
 
 import javax.servlet.ServletException;

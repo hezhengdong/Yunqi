@@ -1,13 +1,12 @@
-package com.ityunqi.web.servlet.Aservlet;
+package com.ityunqi.web.servlet;
 
 
 import com.alibaba.fastjson.JSON;
 import com.ityunqi.pojo.Result;
 import com.ityunqi.pojo.User;
-import com.ityunqi.service.A.UserService;
-import com.ityunqi.service.impl.Aimpl.UserServiceImpl;
+import com.ityunqi.service.UserService;
+import com.ityunqi.service.impl.UserServiceImpl;
 import com.ityunqi.util.Email;
-import com.ityunqi.web.servlet.BaseServlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

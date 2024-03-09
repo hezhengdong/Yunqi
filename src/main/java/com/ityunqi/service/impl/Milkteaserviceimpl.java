@@ -1,8 +1,8 @@
-package com.ityunqi.service.impl.Bimpl;
+package com.ityunqi.service.impl;
 
 import com.ityunqi.mapper.MilkteaMapper;
 import com.ityunqi.pojo.Milktea;
-import com.ityunqi.service.B.Milkteaservice;
+import com.ityunqi.service.Milkteaservice;
 import com.ityunqi.util.SqlSessionFactoryUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

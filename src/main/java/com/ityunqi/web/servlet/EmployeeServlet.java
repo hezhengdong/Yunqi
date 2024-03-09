@@ -1,19 +1,16 @@
-package com.ityunqi.web.servlet.Aservlet;
+package com.ityunqi.web.servlet;
 
 import com.alibaba.fastjson.JSON;
 import com.ityunqi.pojo.Employee;
 import com.ityunqi.pojo.Result;
-import com.ityunqi.pojo.ShopcartBean;
-import com.ityunqi.service.A.EmployeeService;
-import com.ityunqi.service.impl.Aimpl.EmployeeServiceImpl;
-import com.ityunqi.web.servlet.BaseServlet;
+import com.ityunqi.service.EmployeeService;
+import com.ityunqi.service.impl.EmployeeServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/employee/*")
 public class EmployeeServlet extends BaseServlet {
