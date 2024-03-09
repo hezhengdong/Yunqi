@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--客户订单-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>个人中心客户订单</title>
+    <link
+      rel="stylesheet"
+      href="../style/SalesOrder-common.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../style/SalesOrder-index.css"
+    />
+  </head>
+  <body>
+    <div class="background">
+      <div class="header-flex">
+        <div class="logo"></div>
+        <div class="logo-text" >云启冰城</div>
+        <div class="brand-intro" >品牌介绍</div>
+        <div class="product-intro" >产品介绍</div>
+        <div class="personal-center" >个人中心</div>
+        <div class="heat-ranking" >热度排行</div>
+      </div>
+      <div class="navigation-left">
+        <div class="customer-order">
+          <div class="left-logo1"></div>
+          <button class="order-text" onclick="window.location.href='../staffhtml/SalesOrder.html'"></button>
+          <div class="right-logo1"></div>
+        </div>
+        <div class="stock-control">
+          <div class="left-logo2"></div>
+          <button
+            class="stock-text"
+            onclick="window.location.href='../staffhtml/stockControl.html'"
+          ></button>
+          <div class="right-logo2"></div>
+        </div>
+      </div>
+      <div class="view">
+        <div class="searchHistory"></div>
+        <div class="orderForm">
+          <div class="orderHeader">
+            <div class="orderId-Header">id</div>
+            <div class="orderUserName-Header">用户名</div>
+            <div class="orderDetail-Header">订单详情</div>
+            <div class="orderMoney-Header">总金额</div>
+          </div>
+          <div class="orderBox">
+            <div class="orderId"></div>
+            <div class="orderUserName"></div>
+            <div class="orderDetail"></div>
+            <div class="orderMoney"></div>
+          </div>
+          <div class="orderBox">
+            <div class="orderId"></div>
+            <div class="orderUserName"></div>
+            <div class="orderDetail"></div>
+            <div class="orderMoney"></div>
+          </div>
+          <div class="orderBox">
+            <div class="orderId"></div>
+            <div class="orderUserName"></div>
+            <div class="orderDetail"></div>
+            <div class="orderMoney"></div>
+          </div>
+          <div class="orderBox">
+            <div class="orderId"></div>
+            <div class="orderUserName"></div>
+            <div class="orderDetail"></div>
+            <div class="orderMoney"></div>
+          </div>
+          <div class="orderBox">
+            <div class="orderId"></div>
+            <div class="orderUserName"></div>
+            <div class="orderDetail"></div>
+            <div class="orderMoney"></div>
+          </div>
+          <div class="orderBox">
+            <div class="orderId"></div>
+            <div class="orderUserName"></div>
+            <div class="orderDetail"></div>
+            <div class="orderMoney"></div>
+          </div>
+          <div class="orderBox">
+            <div class="orderId"></div>
+            <div class="orderUserName"></div>
+            <div class="orderDetail"></div>
+            <div class="orderMoney"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const apiUrl =
+          "http://localhost:8080/YunqiIceCity/order/selectAll";
+        const headers = new Headers();
+        headers.append("ngrok-skip-browser-warning", "abab");
+        headers.append("Content-Type", "application/json");
+
+        fetch(apiUrl, {
+          method: "GET",
+          // credentials: 'include',
+          headers: headers,
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            // 检查响应状态码和消息，确保请求成功
+            if (data.code === 1 && data.msg === "success") {
+              // 获取所有的orderId类div元素
+              const orderIdDivs = document.querySelectorAll(".orderId");
+              //orderUserName类div元素
+              const orderUserNameDivs =
+                document.querySelectorAll(".orderUserName");
+              //orderDetail类div元素
+              const orderDetailDivs = document.querySelectorAll(".orderDetail");
+              //orderMoney类div元素
+              const orderMoneyDivs = document.querySelectorAll(".orderMoney");
+              //设置orderId
+              data.data.forEach((item, index) => {
+                const orderId = item.orderid;
+                const orderIdDivs = document.querySelectorAll(".orderId");
+                if (orderIdDivs[index]) {
+                  orderIdDivs[index].textContent = orderId;
+                }
+
+                const orderUserName = item.username;
+                orderUserNameDivs[index].textContent = orderUserName;
+                
+                const orderDetail = item.milkteaDetails;
+                orderDetailDivs[index].textContent = orderDetail;
+
+                
+                const orderMoney = item.price;
+                orderMoneyDivs[index].textContent = orderMoney;
+              });
+            } else {
+              console.error("API response is not successful:", data);
+            }
+          })
+          .catch((error) => {
+            console.error(
+              "There was a problem with the fetch operation:",
+              error
+            );
+          });
+      });
+    </script>
+  </body>
+</html>

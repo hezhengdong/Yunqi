@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+}
+.shoppingcat{
+    width: 358px;
+    height: 630px;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color:#ffb501;
+}
+.shoppingcat-partone{
+    width: 358px;
+    height: 358px;
+    position: relative;
+    border-radius: 20px;
+    background: rgb(255, 255, 255, 0);
+
+
+
+}
+
+.shoppingcat-parttwo{
+    position: relative;
+    padding: 10px 35px;
+}
+.shoppingcat-money{
+    font-size: 24px;
+    color: aliceblue;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+}
+.shoppingcat-partthree{
+    width: 250px;
+    height: 43px;
+    background-color: #d9d9d9;
+    font-size: 24px;
+    font-weight: bolder;
+    position: relative;
+    left: 13px;
+    margin: 0 auto;
+    bottom: -80px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 43px;
+    color: #3A3939;
+}

@@ -1,7 +1,8 @@
 package com.ityunqi.service.impl;
 
 import com.ityunqi.mapper.MilkteaMapper;
-import com.ityunqi.pojo.Milktea;
+import com.ityunqi.pojo.milktea.Milktea;
+import com.ityunqi.pojo.milktea.Milktea2;
 import com.ityunqi.service.Milkteaservice;
 import com.ityunqi.util.SqlSessionFactoryUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -80,10 +81,10 @@ public class Milkteaserviceimpl implements Milkteaservice {
     }
 
     @Override
-    public List<Milktea> selectall2() {
+    public List<Milktea2> selectall2() {
         SqlSession sqlSession = sessionFactory.openSession();
         MilkteaMapper mapper = sqlSession.getMapper(MilkteaMapper.class);
-        List<Milktea> milkteas = mapper.selectall2();
+        List<Milktea2> milkteas = mapper.selectall2();
         sqlSession.close();
         return milkteas;
 

@@ -1,4 +1,4 @@
-package com.ityunqi.pojo;
+package com.ityunqi.pojo.shopcart;
 
 import lombok.*;
 
@@ -7,14 +7,12 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class Milktea {
+//用来给前端响应增加购物车界面上的信息
+public class AddShopcartBean {
     private Integer id;
     private String milkteaname;
     private String introduce;
-    private Integer kindid;
     private Integer price;
-    private Integer count;
-    private Integer salenumber;
     private String image;
 
 }

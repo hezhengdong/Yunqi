@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云启冰城</title>
+    <link rel="stylesheet" href="./Untitled-1.css" type="text/css">
+    <style>
+        *{
+            margin: 0;
+        }
+        .paybox{
+             width: 645px;
+             height: 830px;
+             position: absolute;
+             top: 0;
+             left: 0;
+             right: 0;
+             bottom: 0;
+             margin: auto;
+             background-color: grey;
+        }
+        .payboxpartone{
+             position: relative;
+             height: 630px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="paybox" id="paybox">
+        <div class="payboxpartone" id="payboxpartone">
+            <input type="button" value="+" id="payboxpartonebutton" onclick="display()" style="position: relative; left: 610px; top: 10px; border-radius: 100px; transform: rotate(45deg); width: 26px; height: 26px;">
+        </div>
+        <div class="payboxparttwo" style="color: aliceblue; font-size: 24px; font-weight: bold; text-align: center; line-height: 200px;">请用微信扫描二维码付款</div>
+    </div>
+    <script>
+        function display(){
+            document.getElementById('paybox').style.display='none'
+
+        }
+    </script>
+</body>
+</html>

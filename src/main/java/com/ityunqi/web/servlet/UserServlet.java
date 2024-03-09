@@ -33,17 +33,22 @@ public class UserServlet extends BaseServlet {
 
         if (username.length()==0){
             jsonString = JSON.toJSONString(Result.error("用户名不能为空"));
+            System.out.println("用户名为空");
         } else if (user==null) {
             jsonString = JSON.toJSONString(Result.error("用户名不存在"));
+            System.out.println("用户名不存在");
         } else if (password.length()==0) {
             jsonString = JSON.toJSONString(Result.error("密码不能为空"));
+            System.out.println("密码不能为空");
         } else if (!user.getPassword().equals(password)) {
             jsonString = JSON.toJSONString(Result.error("密码输入错误"));
+            System.out.println("密码输入错误");
         } else {
 
             int userid = userService.selectUserid(username);
 
             Cookie cookie = new Cookie("userid", String.valueOf(userid));
+            cookie.setPath("/");
             resp.addCookie(cookie);
             System.out.println("成功设置cookie,为userid="+userid);
 

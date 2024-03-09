@@ -1,7 +1,7 @@
 package com.ityunqi.mapper;
 
-import com.ityunqi.pojo.Employee;
-import com.ityunqi.pojo.Milktea;
+import com.ityunqi.pojo.milktea.Milktea;
+import com.ityunqi.pojo.milktea.Milktea2;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -12,7 +12,7 @@ import java.util.List;
 public interface MilkteaMapper {
 @Select("select * from dbyunqi.milktea")
     public List<Milktea> selectall();
-    public List<Milktea>  selectall2();
+    public List<Milktea2>  selectall2();
 
     @Insert("insert into dbyunqi.milktea values(null,#{milkteaname},#{introduce},#{kindid},#{price},#{count},#{salenumber},#{image}) ")
     void add(Milktea milktea);

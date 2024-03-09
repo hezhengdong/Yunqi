@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>register</title>
+    <link rel="stylesheet" type="text/css" href="../style/register.css" />
+    <link rel="stylesheet" type="text/css" href="../icon3/iconfont(1).css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="container">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <form action="" method="" id="register" class="form" id="a-form">
+        <h2 class="title">创建账号</h2>
+        <input
+          type="text"
+          onblur="username1(this.value)"
+          class="form_input"
+          id="input1"
+          placeholder="请输入用户名:"
+        />
+        <div class="usernamemeg"></div>
+        <input
+          type="text"
+          onblur="password1(this.value)"
+          class="form_input"
+          id="input2"
+          placeholder="请输入密码:"
+        />
+        <div class="passwordmeg1"></div>
+        <input
+          type="text"
+          onblur="password2(this.value)"
+          class="form_input"
+          id="input3"
+          placeholder="请再次输入密码:"
+        />
+        <div class="passwordmeg2"></div>
+        <input
+          type="text"
+          class="form_input"
+          id="input5"
+          placeholder="请输入要绑定的手机号:"
+        />
+        <div class="phonemeg"></div>
+        <input
+          type="number"
+          onblur="verification1(this.value)"
+          class="form_input"
+          id="input4"
+          placeholder="请输入验证码:"
+        />
+        <div class="verificationmeg"></div>
+        <button class="verification" onclick="requestVerification()">
+          点击获取验证码
+        </button>
+        <div class="iconfont iconfont1">
+          <a href="javascript:void(0)" onclick="shift(this)">&#xe601;</a>
+        </div>
+      <button type="submit" class="button" >创建</button>
+      </form>
+      <div class="container2">
+        <div class="bubble"><div class="welcome">Welcome</div></div>
+        <div class="shadow"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let btn2 = document.querySelector(".button");
+    //用检查用户名是否符合规范
+    let usernamemeg = document.querySelector(".usernamemeg");
+    function isValidUsername(username) {
+      const regex = /^.{5,20}$/;
+      return regex.test(username);
+    }
+    function username1(username) {
+      if (isValidUsername(username)) {
+        usernamemeg.innerHTML = "";
+        btn2.disabled = false;
+      } else {
+        usernamemeg.innerHTML = "用户名不符合规范，请输入5—20个字符";
+        btn2.disabled = true;
+      }
+    }
+    //检查密码是否符合规范
+    let passwordmeg1 = document.querySelector(".passwordmeg1");
+    function isValidPassword(password) {
+      const regex = /^[A-Za-z0-9]{5,15}$/;
+      return regex.test(password);
+    }
+    function password1(password1) {
+      if (isValidUsername(password1)) {
+        passwordmeg1.innerHTML = "";
+        btn2.disabled = false;
+      } else {
+        passwordmeg1.innerHTML =
+          "密码不符合规范，请输入5—15个只包含数字和大小写字母的字符";
+        btn2.disabled = true;
+      }
+    }
+    //检查两次输入的密码是否相同
+    let passwordmeg2 = document.querySelector(".passwordmeg2");
+    function password2(password2) {
+      if (password2 == document.querySelector("#input2").value) {
+        passwordmeg2.innerHTML = "";
+        btn2.disabled = false;
+      } else {
+        passwordmeg2.innerHTML = "两次输入的密码不同";
+        btn2.disabled = true;
+      }
+    }
+    //用于检查手机号是否符合规范
+    let phonemeg = document.querySelector(".phonemeg");
+    function isValidPhoneNumber(phoneNumber) {
+      const regex = /^1[3456789]\d{9}$/;
+      return regex.test(phoneNumber);
+    }
+    var phone1 = document.getElementById("input5");
+    phone1.addEventListener("blur", function () {
+      var phone = document.getElementById("input5").value;
+      if (isValidPhoneNumber(phone)) {
+        phonemeg.innerHTML = "";
+        btn2.disabled = false;
+      } else {
+        phonemeg.innerHTML = "手机号不符合规范";
+        btn2.disabled = true;
+      }
+    });
+    //检查验证码是否符合规范
+    let verificationmeg = document.querySelector(".verificationmeg");
+    function isValidCaptcha(captcha) {
+      const regex = /^\d{6}$/;
+      return regex.test(captcha);
+    }
+    function verification1(verification) {
+      if (isValidCaptcha(verification)) {
+        verificationmeg.innerHTML = "";
+        btn2.disabled = false;
+      } else {
+        verificationmeg.innerHTML = "验证码不符合规范，要求六位数字";
+        btn2.disabled = true;
+      }
+    }
+    //用于控制重新可发送验证码的时间
+    var timeRemaining = 60; //定义剩下的秒数
+    var btn = document.querySelector(".verification");
+    btn.addEventListener("click", function (e) {
+      btn.disabled = true;
+      console.log("点击了");
+      e.preventDefault();
+      //用于创建产生按钮动画的元素并判断位置
+      var rect = btn.getBoundingClientRect();
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var scrollLeft =
+        window.pageXOffset || document.documentElement.scrollLeft;
+      let x = e.clientX - rect.left;
+      let y = e.clientY - rect.top;
+      let ripples = document.createElement("span");
+      ripples.className = "creat";
+      ripples.style.left = x + "px";
+      ripples.style.top = y + "px";
+      this.appendChild(ripples);
+      //用于验证码的倒计时效果
+      setInterval(() => {
+        ripples.remove();
+      }, 1000);
+      let time = setInterval(function () {
+        if (timeRemaining == 0) {
+          //清除定时器和复原按钮
+          clearInterval(time);
+          btn.disabled = false;
+          btn.innerHTML = "点击获取验证码";
+          timeRemaining = 3;
+        } else {
+          btn.innerHTML = "还剩下" + timeRemaining + "秒";
+          timeRemaining--;
+        }
+      }, 1000);
+    });
+    //用于发送验证码请求的函数
+    let requestVerification = function () {
+      const params = new URLSearchParams();
+      let phone = document.getElementById("input5").value;
+      params.append("phone", encodeURIComponent(phone));
+      axios({
+        url: "http://localhost:8080/YunqiIceCity/user/register",
+        method: "post",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=utf-8", // 设置请求头
+        },
+        data: params.toString(),
+      })
+        .then((result) => {
+          console.log("发送成功");
+          console.log(result);
+        })
+        .catch((error) => {
+          console.log("发送失败");
+          console.log(error);
+        });
+    };
+    //通过转换眼睛图标来控制密码框的显示与隐藏
+    var flag = 0;
+    function shift(eye1) {
+      let Switch1 = document.getElementById("input2");
+      let Switch2 = document.getElementById("input3");
+      if (flag == 0) {
+        eye1.innerHTML = "&#xe6a7;";
+        Switch1.type = "text";
+        Switch2.type = "text";
+        flag = 1;
+      } else {
+        eye1.innerHTML = "&#xe601;";
+        Switch1.type = "password";
+        Switch2.type = "password";
+        flag = 0;
+      }
+    }
+    //发送注册请求的网络请求
+    document
+      .getElementById("register")
+      .addEventListener("submit", function (event) {
+        event.preventDefault(); // 阻止表单默认提交行为
+        //获取表单数据
+        document.location.href=""
+        let username = document.getElementById("input1").value;
+        if (username == "请输入用户名：") {
+          username = "";
+        }
+        let password = document.getElementById("input2").value;
+        if (password == "请输入密码：") {
+          password = "";
+        }
+        let verification = document.getElementById("input4").value;
+        if (verification == "请输入验证码：") {
+          verification = "";
+        }
+        // 创建XMLHttpRequest对象
+        const xhr = new XMLHttpRequest();
+
+        // 设置请求方法和URL
+        xhr.open(
+          "POST",
+          "http://localhost:8080/YunqiIceCity/user/getSms",
+          true
+        );
+
+        // 设置请求头，通常登录需要设置Content-Type为application/x-www-form-urlencoded
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
+
+        // 定义请求成功时的回调函数
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            // 请求成功
+            // 这里处理后端返回的数据，可能是JSON格式
+            const response = JSON.parse(xhr.responseText);
+            if (response.code === 1) {
+              console.log(response);
+              alert("注册成功！");
+              // 这里可以执行登录成功后的操作，比如跳转到其他页面
+              window.location.href = "../1-login.html/02-userLogin0.html";
+            } else if (response.msg == "用户名不能为空") {
+              alert("注册失败：" + "用户名不能为空");
+              console.log(response);
+            } else if (response.msg == "密码不能为空") {
+              alert("注册失败：" + "密码不能为空");
+            } else if (response.msg == "用户名已存在，请换一个吧") {
+              alert("注册失败：" + "用户名已存在，请换一个吧");
+            } else if (response.msg == "密码长度不能超过20个字符") {
+              alert("注册失败：" + "密码长度不能超过20个字符");
+            } else if (response.msg == "两次输入的密码不一致") {
+              alert("注册失败：" + "两次输入的密码不一致");
+            } else {
+              alert("注册失败：" + response.message);
+              // 这里可以处理登录失败的情况
+              console.log(xhr.responseText);
+            }
+          } else {
+            // 处理请求错误的情况
+            alert("请求失败，状态码：" + xhr.status);
+          }
+        };
+
+        // 定义请求错误时的回调函数
+        xhr.onerror = function () {
+          alert("网络错误或请求失败！");
+        };
+
+        // 发送请求，将手机号和密码以查询字符串的形式发送
+        xhr.send(
+          "username=" +
+            encodeURIComponent(username) +
+            "&password=" +
+            encodeURIComponent(password) +
+            "&verification=" +
+            encodeURIComponent(verification)
+        );
+      });
+  </script>
+</html>

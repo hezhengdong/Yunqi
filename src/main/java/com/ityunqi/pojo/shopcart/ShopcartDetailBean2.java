@@ -1,4 +1,4 @@
-package com.ityunqi.pojo;
+package com.ityunqi.pojo.shopcart;
 
 import lombok.*;
 

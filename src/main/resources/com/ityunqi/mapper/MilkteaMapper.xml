@@ -5,7 +5,7 @@
 <mapper namespace="com.ityunqi.mapper.MilkteaMapper">
 
 
-    <select id="kindidselect" resultType="com.ityunqi.pojo.Milktea">
+    <select id="kindidselect" resultType="com.ityunqi.pojo.milktea.Milktea">
 
         select *
         from dbyunqi.milktea
@@ -14,13 +14,13 @@
         </where>
     </select>
 
-    <select id="salenumberselect" resultType="com.ityunqi.pojo.Milktea">
+    <select id="salenumberselect" resultType="com.ityunqi.pojo.milktea.Milktea">
         select *
         from dbyunqi.milktea
         ORDER BY salenumber DESC
 
     </select>
-    <select id="selectall2" resultType="com.ityunqi.pojo.Milktea">
+    <select id="selectall2" resultType="com.ityunqi.pojo.milktea.Milktea">
         select dbyunqi.milktea.id,
                dbyunqi.milktea.salenumber,
                dbyunqi.milktea.count,

@@ -1,4 +1,4 @@
-package com.ityunqi.pojo;
+package com.ityunqi.pojo.shopcart;
 
 import lombok.*;
 
@@ -8,6 +8,7 @@ import lombok.*;
 @EqualsAndHashCode
 @ToString
 //查询购物车所有时，使用的实体类
+//用到了集合，无法替换为map
 public class ShopcartBean {
     private Integer id;
     private String milkteaname;

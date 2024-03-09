@@ -1,6 +1,7 @@
 package com.ityunqi.service;
 
-import com.ityunqi.pojo.Milktea;
+import com.ityunqi.pojo.milktea.Milktea;
+import com.ityunqi.pojo.milktea.Milktea2;
 
 import java.util.List;
 
@@ -12,5 +13,5 @@ public interface Milkteaservice {
 
     List<Milktea> kindidselect(int kindid);
     List<Milktea> salenumberselect();
-    public List<Milktea> selectall2();
+    public List<Milktea2> selectall2();
 }

@@ -5,6 +5,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.ityunqi.pojo.*;
+import com.ityunqi.pojo.Order.Order;
+import com.ityunqi.pojo.Order.OrderDetail;
+import com.ityunqi.pojo.shopcart.*;
 import com.ityunqi.service.ShopcartService;
 import com.ityunqi.service.impl.ShopcartServiceImpl;
 import com.ityunqi.util.SqlSessionFactoryUtils;
@@ -16,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
@@ -33,11 +37,6 @@ public class ShopcartServlet extends BaseServlet {
      * @return
      */
     private int getUserid(HttpServletRequest req,HttpServletResponse resp) {
-        //解决跨域问题
-        // 设置允许跨域的域名，可以设置为 * 表示允许所有域名访问
-        //resp.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500/src/main/webapp/HTML/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83%E8%B4%AD%E7%89%A9%E8%BD%A6.html");
-        // 允许携带 cookie
-        //resp.setHeader("Access-Control-Allow-Credentials", "true");
         //1. 获取Cookie数组
         Cookie[] cookies = req.getCookies();
         // 准备接收cookie中的用户id
@@ -53,14 +52,12 @@ public class ShopcartServlet extends BaseServlet {
                 break;
             }
         }
-        //if (value != null) {
+        if (value != null) {
             // 转换类型，获取int类型的userid
-        System.out.println(value);
             int userid = Integer.parseInt(value);
-        System.out.println(userid);
             return userid;
-        //}
-        //return -1;
+        }
+        return -1;
     }
 
     /**
@@ -74,10 +71,9 @@ public class ShopcartServlet extends BaseServlet {
     public void selectAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         //===================一、获取cookie=====================
-        //int userid = getUserid(req,resp);
-        //System.out.println(userid);
-        //if (userid != -1) {
-        int userid = 1;
+        int userid = getUserid(req,resp);
+        System.out.println("成功获取cookie！！！"+userid);
+        if (userid != -1) {
             //===================二、调用方法查询所有=====================
             List<ShopcartBean> shopcarts = shopcartService.selectAll(userid);
             //===================三、响应数据=====================
@@ -85,27 +81,14 @@ public class ShopcartServlet extends BaseServlet {
             System.out.println(jsonString);
             resp.setContentType("application/json;charset=utf-8");
             resp.getWriter().write(jsonString);
-        //}
-    }
-    public void selectAll2(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        //===================一、获取cookie=====================
-        int userid = getUserid(req,resp);
-        System.out.println("接收到的cookieid为"+userid);
-        if (userid != -1) {
-        //int userid = 1;
-        //===================二、调用方法查询所有=====================
-        List<ShopcartBean> shopcarts = shopcartService.selectAll(userid);
-        //===================三、响应数据=====================
-        String jsonString = JSON.toJSONString(Result.success(shopcarts));
-        System.out.println(jsonString);
-        resp.setContentType("application/json;charset=utf-8");
-        resp.getWriter().write(jsonString);
+        }else {
+            System.out.println("获取cookie失败");
         }
     }
 
+
     public void selectByid(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //String _id = req.getParameter("id");
+        HttpSession session = req.getSession();
 
         BufferedReader br = req.getReader();
         String params = br.readLine();
@@ -115,7 +98,11 @@ public class ShopcartServlet extends BaseServlet {
         String _id = jsonData.get("id");
         System.out.println(_id);
         int id = Integer.parseInt(_id);
-        System.out.println(id);
+
+        session.setAttribute("milkteaid",_id);
+        System.out.println("已经将id添加到了session中");
+
+
         //===================二、调用方法查询所有=====================
         AddShopcartBean addShopcartBean = shopcartService.selectByid(id);
         //===================三、响应数据===========================
@@ -140,12 +127,25 @@ public class ShopcartServlet extends BaseServlet {
         String params = br.readLine();//json字符串
         System.out.println(params);
         //2. 转为ShopcartDetailBean对象
-        ShopcartDetailBean shopcartDetailBean = JSON.parseObject(params, ShopcartDetailBean.class);
+        Map<String, String> jsonData = JSONObject.parseObject(params, new TypeReference<Map<String,String>>() {});
+        System.out.println("已经将json转换为了map集合: "+jsonData);
+        String count0 = jsonData.get("count");
+        int count1 = Integer.parseInt(count0);
+
+        //从session中获取id
+        HttpSession session = req.getSession();
+        String milkteaid1 = (String) session.getAttribute("milkteaid");
+        int milkteaid2 = Integer.parseInt(milkteaid1);
+
+        System.out.println("从session中获取的id为: "+milkteaid2);
+
+
+        ShopcartDetailBean shopcartDetailBean = new ShopcartDetailBean(milkteaid2,count1);
 
         //===================二、获取cookie=====================
-        //int userid = getUserid(req,resp);
-        //if (userid != -1) {
-        int userid = 1;
+        int userid = getUserid(req,resp);
+        if (userid != -1) {
+        //int userid = 1;
 
             //===================三、判断购物车中是否已有该奶茶id，并执行对应操作=====================
             //1. 调用方法获取购物车中奶茶id数组
@@ -173,10 +173,11 @@ public class ShopcartServlet extends BaseServlet {
                     ShopcartDetail shopcartDetail = new ShopcartDetail(userid, milkteaid, count);
                     shopcartService.add(shopcartDetail);
                 }
-            //}
+            }
 
             //===================四、响应数据=====================
             String jsonString = JSON.toJSONString(Result.success());
+            System.out.println("执行成功");
             resp.setContentType("application/json;charset=utf-8");
             resp.getWriter().write(jsonString);
         }
@@ -191,14 +192,11 @@ public class ShopcartServlet extends BaseServlet {
      * @throws IOException
      */
     public void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //===================一、接收前端数据=====================
-        //String _milkteaid = req.getParameter("id");
-        //String _count = req.getParameter("count");
-
+        //===================一、接收前端数据(json)=====================
         BufferedReader br = req.getReader();
         String params = br.readLine();
 
-        System.out.println(params);
+        System.out.println("前端传的数据:"+params);
 
         // 解析JSON字符串为JSON对象
         Map<String, String> jsonData = JSONObject.parseObject(params, new TypeReference<Map<String,String>>() {});
@@ -216,11 +214,13 @@ public class ShopcartServlet extends BaseServlet {
 
             //===================三、调用修改方法=====================
             shopcartService.update(milkteaid, count, userid);
+        System.out.println("成功执行方法");
 
-            //===================四、响应数据=====================
-            String jsonString = JSON.toJSONString(Result.success(milkteaid));
-            resp.setContentType("text/json;charset=utf-8");
-            resp.getWriter().write(jsonString);
+        //===================四、响应数据=====================
+        String jsonString = JSON.toJSONString(Result.success(milkteaid));
+        resp.setContentType("application/json;charset=utf-8");
+        resp.getWriter().write(jsonString);
+        System.out.println("成功响应数据");
         //}
     }
 
@@ -247,7 +247,7 @@ public class ShopcartServlet extends BaseServlet {
 
             //===================四、响应数据=====================
             String jsonString = JSON.toJSONString(Result.success());
-            resp.setContentType("text/json;charset=utf-8");
+            resp.setContentType("application/json;charset=utf-8");
             resp.getWriter().write(jsonString);
         //}
     }
@@ -262,9 +262,9 @@ public class ShopcartServlet extends BaseServlet {
      */
     public void totalPrice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //===================一、获取cookie=====================
-        //int userid = getUserid(req,resp);
-        //if (userid != -1) {
-        int userid = 1;
+        int userid = getUserid(req,resp);
+        if (userid != -1) {
+        //int userid = 1;
 
             //===================二、获取购物车总金额=====================
             //1. 查询购物车中的商品信息
@@ -277,7 +277,29 @@ public class ShopcartServlet extends BaseServlet {
 
             //===================三、响应数据=====================
             String jsonString = JSON.toJSONString(Result.success(totalPrice));
-            resp.setContentType("text/json;charset=utf-8");
+            resp.setContentType("application/json;charset=utf-8");
+            resp.getWriter().write(jsonString);
+        }
+    }
+
+    public void totalPrice2(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //===================一、获取cookie=====================
+        //int userid = getUserid(req,resp);
+        //if (userid != -1) {
+            int userid = 1;
+
+            //===================二、获取购物车总金额=====================
+            //1. 查询购物车中的商品信息
+            List<ShopcartDetailBean2> shopcartDetailBean2s = shopcartService.selectAllBysd(userid);
+            //2. 计算订单总金额
+            int totalPrice = 0;
+            for (ShopcartDetailBean2 shopcartDetailBean2 : shopcartDetailBean2s) {
+                totalPrice += (shopcartDetailBean2.getPrice() * shopcartDetailBean2.getCount());
+            }
+
+            //===================三、响应数据=====================
+            String jsonString = JSON.toJSONString(Result.success(totalPrice));
+            resp.setContentType("application/json;charset=utf-8");
             resp.getWriter().write(jsonString);
         //}
     }
@@ -333,7 +355,7 @@ public class ShopcartServlet extends BaseServlet {
 
                 //===================三、响应数据=====================
                 String jsonString = JSON.toJSONString(Result.success());
-                resp.setContentType("text/json;charset=utf-8");
+                resp.setContentType("application/json;charset=utf-8");
                 resp.getWriter().write(jsonString);
             }
 

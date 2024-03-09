@@ -6,7 +6,7 @@
     <!-- milktea.image-->
     <!--milktea.id, milktea.milkteaname, shopcart_detail.count, milktea.price-->
     <!--给购物车返回数据-->
-    <select id="selectAll" resultType="com.ityunqi.pojo.ShopcartBean">
+    <select id="selectAll" resultType="com.ityunqi.pojo.shopcart.ShopcartBean">
         select milktea.id,milktea.milkteaname, shopcart_detail.count, milktea.image
 
         from shopcart_detail
@@ -16,7 +16,7 @@
 
     </select>
 
-    <select id="selectAllBysd" resultType="com.ityunqi.pojo.ShopcartDetailBean2">
+    <select id="selectAllBysd" resultType="com.ityunqi.pojo.shopcart.ShopcartDetailBean2">
         select milktea.id, shopcart_detail.count, milktea.price, milktea.salenumber
 
         from shopcart_detail
@@ -29,7 +29,7 @@
 
 
 
-    <select id="selectByid" resultType="com.ityunqi.pojo.AddShopcartBean">
+    <select id="selectByid" resultType="com.ityunqi.pojo.shopcart.AddShopcartBean">
         select milktea.id, milktea.milkteaname, milktea.introduce, milktea.price, milktea.image
         from milktea
         where milktea.id = #{id};

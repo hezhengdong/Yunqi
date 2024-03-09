@@ -1,7 +1,8 @@
 package com.ityunqi.web.servlet;
 
 import com.alibaba.fastjson.JSON;
-import com.ityunqi.pojo.Milktea;
+import com.ityunqi.pojo.milktea.Milktea;
+import com.ityunqi.pojo.milktea.Milktea2;
 import com.ityunqi.pojo.Result;
 import com.ityunqi.service.Milkteaservice;
 import com.ityunqi.service.impl.Milkteaserviceimpl;
@@ -46,7 +47,7 @@ public class milkteaServlet extends BaseServlet {
     }
 
     public void selectall2(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
-        List<Milktea> milkteas = milkteaservice.selectall();
+        List<Milktea2> milkteas = milkteaservice.selectall2();
         String jsonString = JSON.toJSONString(Result.success(milkteas));
         httpServletResponse.setContentType("application/json;charset=utf-8");
         httpServletResponse.getWriter().write(jsonString);

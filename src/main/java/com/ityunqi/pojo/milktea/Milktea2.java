@@ -1,4 +1,4 @@
-package com.ityunqi.pojo;
+package com.ityunqi.pojo.milktea;
 
 import lombok.*;
 
@@ -7,11 +7,14 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class AddShopcartBean {
+public class Milktea2 {
     private Integer id;
     private String milkteaname;
     private String introduce;
+    private String kindname;
     private Integer price;
+    private Integer count;
+    private Integer salenumber;
     private String image;
 
 }

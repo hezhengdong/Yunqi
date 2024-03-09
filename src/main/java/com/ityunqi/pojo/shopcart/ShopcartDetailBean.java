@@ -1,4 +1,4 @@
-package com.ityunqi.pojo;
+package com.ityunqi.pojo.shopcart;
 
 import lombok.*;
 
@@ -11,6 +11,5 @@ import lombok.*;
 public class ShopcartDetailBean {
     private Integer milkteaid;
     private Integer count;
-
 
 }

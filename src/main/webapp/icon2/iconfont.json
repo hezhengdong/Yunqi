@@ -1,0 +1,16 @@
+{
+  "id": "4449289",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "10951399",
+      "name": "jiahao",
+      "font_class": "jiahao",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    }
+  ]
+}

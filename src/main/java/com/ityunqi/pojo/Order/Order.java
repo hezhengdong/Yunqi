@@ -1,4 +1,5 @@
-package com.ityunqi.pojo;
+package com.ityunqi.pojo.Order;
+
 
 import lombok.*;
 
@@ -7,9 +8,10 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class OrderBean {
+public class Order {
     private Integer orderid;
-    private String username;
-    private String milkteaDetails;
+    private Integer userid;
     private Integer price;
+    private Integer status;
+
 }

@@ -1,6 +1,6 @@
 package com.ityunqi.service;
 
-import com.ityunqi.pojo.OrderBean;
+import com.ityunqi.pojo.Order.OrderBean;
 
 import java.util.List;
 

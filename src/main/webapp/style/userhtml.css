@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    overflow-x: hidden;
+    /* overflow-y:hidden ; */
+}
+.container {
+    width: 1488px;
+    min-width: 1280px;
+    position: absolute;
+}
+button {
+    border: none;
+    cursor: pointer;
+}
+ul li {
+    list-style: none;
+}
+
+/* 头部选择卡---start */
+.goods-horizontal-tabs {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: #ff9901; */
+    /* background-color: transparent; */
+    background-color: transparent;
+    position: absolute;
+    z-index: 8;
+    height: 90px;
+    width: 100%;
+}
+.horizontalTab {
+    cursor: pointer;
+    height: 50px;
+    width: 10%;
+    margin-top: 20px;
+    font-size: 28px;
+    background-color: transparent;
+    color: black;
+}
+.horizontalTab img {
+    margin-top: -5px;
+    height: 135%;
+    width: 155%;
+}
+.horizontalTab.active{
+    background-color: #ffb501;
+}
+.goods-horizontal-tabs :hover {
+    font-weight: 400;
+    background-color: #ffb501;
+}
+/* 头部选项卡---end */
+
+/* 左侧小选择卡和选择卡内容展示---start */
+.goods-tabAndContext {
+    height: 720px;
+    position: relative;
+    background-color: #ff9901;
+}
+
+.bj-1 {
+    position: absolute;
+    left: -320px;
+    bottom: -130px;
+}
+.bj-2 {
+    position: absolute;
+    right: -100px;
+    top: -10px;
+}
+.bj-4 {
+    position: absolute;
+    left: -370px;
+    bottom: -120px;
+}
+.bj-3 {
+    position: absolute;
+    left: -120px;
+    top: -30px;
+}
+.bj-3 img {
+    height: 200px;
+    width: 200px;
+}
+.bj-5 {
+    position: absolute;
+    left: -350px;
+    bottom: -60px;
+}
+.bj-5 img {
+    height: 400px;
+    width: 400px;
+}
+.bj-6 {
+    position: absolute;
+    left: -300px;
+    bottom: -20px;
+} 
+.bj-7 {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    left: -130px;
+    top: 0;
+}
+.bj-8 {
+    position: absolute;
+    height: 30px;
+    right: -100px;
+    top: -10px;
+}
+/* 左侧小选择卡和选择卡内容展示---end */
+
+/* 左侧小选择卡---start */
+.goods-vertical-tabs {
+    /* 能设置小选择卡的边角弧度 */
+    overflow: hidden;
+    border-radius: 8%;
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 230px;
+}
+.verticalTab {
+    height: 25%;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+.verticalTab.active {
+    background-color: #FFB501;
+    color: white;
+    
+}
+.goods-vertical-tabs :hover {
+    font-weight: bold;
+}
+/* 左侧小选择卡---end */
+
+/* 小选择卡的内容展示---start */
+.goods-content {
+    /* display: flex; */
+    display: block;
+    position: absolute;
+    right: 80px;
+    width: 1150px;
+    height: 650px;
+    border-radius: 5%;
+    background-color: white;
+}
+.tabcontent {
+    display: none;
+}
+.tabcontent.active {
+    display: block;
+}
+.goods-content li {
+    position: relative;
+    float: left;
+    width: 200px;
+    height: 260px;
+    background-color: white;
+    border-radius: 10%;
+    margin-right: 80px;
+    margin-top: 50px;
+    margin-left: 80px;
+    /* margin-top: 20px;
+    margin-left: 38px;
+    margin-right: 180px;
+    margin-bottom: 30px; */
+    /* margin-left: 10px; */
+    /* margin-top: 20px; */
+    /* margin-right: 250px; */
+    /* margin-bottom: 18px; */
+    /* border-radius: 10%; */
+}
+.goods-content li img {
+    display: block;
+    width: 195px;
+    height: 195px;
+    /* background-color: #a5a5a5; */
+    background-color: white;
+    border-radius: 10%;
+}
+.goods-content li h4 {
+    position: absolute;
+    top: 200px;
+    font-weight: 400;
+}
+.goods-content li i {
+        position: absolute;
+        top: 220px;
+        font-weight: 400;
+}
+.goods-content li button {
+    position: absolute;
+    top: 220px;
+    right: 10px;
+    font-size: 22px;
+    color: red;
+}
+/* 小选择卡的内容展示---end */
+
+/* 品牌介绍的内容展示（不包括主选择卡）---start */
+.goods-brand {
+    /* height: 80%; */
+    /* background-color: pink; */
+    display: none;
+}
+/* 品牌介绍的内容展示（不包括主选择卡）---end */
