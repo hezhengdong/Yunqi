@@ -208,9 +208,9 @@ public class ShopcartServlet extends BaseServlet {
         int count = Integer.parseInt(_count);
 
         //===================二、获取cookie=====================
-        //int userid = getUserid(req,resp);
-        //if (userid != -1) {
-            int userid = 1;
+        int userid = getUserid(req,resp);
+        if (userid != -1) {
+        //    int userid = 1;
 
             //===================三、调用修改方法=====================
             shopcartService.update(milkteaid, count, userid);
@@ -221,7 +221,7 @@ public class ShopcartServlet extends BaseServlet {
         resp.setContentType("application/json;charset=utf-8");
         resp.getWriter().write(jsonString);
         System.out.println("成功响应数据");
-        //}
+        }
     }
 
     /**
