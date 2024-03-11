@@ -86,7 +86,14 @@ public class ShopcartServlet extends BaseServlet {
         }
     }
 
-
+    /**
+     * 查询回显
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     public void selectByid(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
@@ -280,28 +287,6 @@ public class ShopcartServlet extends BaseServlet {
             resp.setContentType("application/json;charset=utf-8");
             resp.getWriter().write(jsonString);
         }
-    }
-
-    public void totalPrice2(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //===================一、获取cookie=====================
-        //int userid = getUserid(req,resp);
-        //if (userid != -1) {
-            int userid = 1;
-
-            //===================二、获取购物车总金额=====================
-            //1. 查询购物车中的商品信息
-            List<ShopcartDetailBean2> shopcartDetailBean2s = shopcartService.selectAllBysd(userid);
-            //2. 计算订单总金额
-            int totalPrice = 0;
-            for (ShopcartDetailBean2 shopcartDetailBean2 : shopcartDetailBean2s) {
-                totalPrice += (shopcartDetailBean2.getPrice() * shopcartDetailBean2.getCount());
-            }
-
-            //===================三、响应数据=====================
-            String jsonString = JSON.toJSONString(Result.success(totalPrice));
-            resp.setContentType("application/json;charset=utf-8");
-            resp.getWriter().write(jsonString);
-        //}
     }
 
     /**

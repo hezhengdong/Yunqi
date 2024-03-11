@@ -11,7 +11,9 @@ import java.util.List;
 
 public interface MilkteaMapper {
 @Select("select * from dbyunqi.milktea")
+
     public List<Milktea> selectall();
+
     public List<Milktea2>  selectall2();
 
     @Insert("insert into dbyunqi.milktea values(null,#{milkteaname},#{introduce},#{kindid},#{price},#{count},#{salenumber},#{image}) ")

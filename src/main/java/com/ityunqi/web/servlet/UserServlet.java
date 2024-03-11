@@ -135,7 +135,7 @@ public class UserServlet extends BaseServlet {
             jsonString = JSON.toJSONString(Result.success());
         } else if (code==null) {
             System.out.println("你没在session中获取到验证码");
-            jsonString = JSON.toJSONString(Result.error("你没在session中获取到验证码"));
+            jsonString = JSON.toJSONString(Result.error("后端未获取到验证码"));
         }else {
             System.out.println("验证码错误");
             jsonString = JSON.toJSONString(Result.error("验证码错误"));
