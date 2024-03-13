@@ -357,30 +357,27 @@
           });
       });
 
-      // document.addEventListener("DOMContentLoaded", (event) => {
-      //   const headers = new Headers();
-      //   headers.append("ngrok-skip-browser-warning", "abab");
-      //   headers.append("Content-Type", "application/json");
-      //
-      //   fetch("http://localhost:8080/YunqiIceCity/shopcart/checkout", {
-      //     method: "GET",
-      //     // credentials: 'include',
-      //     headers: headers,
-      //   })
-      //           .then((response) => {
-      //             if (!response.ok) {
-      //               throw new Error("Network response was not ok");
-      //             }
-      //             return response.json();
-      //           })
-      //           })
-      //           .catch((error) => {
-      //             console.error(
-      //                     "There was a problem with the fetch operation:",
-      //                     error
-      //             );
-      //           });
-      // // });
+      //结算接口
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const headers = new Headers();
+        headers.append("ngrok-skip-browser-warning", "abab");
+        headers.append("Content-Type", "application/json");
+
+        document.querySelector('.jieSuanButton').addEventListener('click', function(){
+          fetch('https://vast-suitably-ram.ngrok-free.app/YunqiIceCity/shopcart/checkout2',{
+            method: 'POST',
+            headers: headers,
+          })
+          .then(data => {
+            console.log('结算成功', data);
+            //成功后刷新页面
+            window.location.reload();
+          })
+          .catch(error => {
+            console.log('结算失败', error);
+          })
+        })
+      });
     </script>
   </body>
 </html>
